@@ -2,7 +2,7 @@ import React from "react";
 import BannerImg from "../assets/Images/evonne-weinhaus-fast-solutiuons.png";
 import "./SpeakingPage.css";
 
-const SpeakingsPage = () => (
+const SpeakingsPage:React.FC = () => (
   <section id="speaking">
     <div className="wrapper">
       <div className="title">

@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
-import Nav from "./Components/Nav/Nav.jsx";
-import Footer from "./Components/Footer/Footer";
-import "./Components/Footer/Footer.css"
+// import "./Components/Footer/Footer.css"
 import "./index.css";
+import Nav from "./Components/Nav/Nav";
+import Footer from "./Components/Footer/Footer";
 import { Amplify } from "aws-amplify";
 import outputs from "../amplify_outputs.json";
 
@@ -12,8 +12,7 @@ Amplify.configure(outputs);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Nav />
-    <App />
+      <Nav showMenu="" toggleMenu={() => {}} />    <App />
     <Footer />
   </React.StrictMode>
 );

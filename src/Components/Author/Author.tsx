@@ -2,7 +2,7 @@ import React from "react";
 import "./Author.css";
 import AuthorImage from "../../assets/Images/evonne-bg.png";
 
-const Author = () => {
+const Author: React.FC = () => {
   return (
     <section id="author">
       <div className="author wrapper">

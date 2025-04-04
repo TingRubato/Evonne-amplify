@@ -1,76 +1,63 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import "./Header.css";
 
-const Header = (props) => {
-  const canvasRef = useRef(null);
-
+const Header: React.FC = () => {
   useEffect(() => {
-    const requestAnimationFrame =
-      window.requestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      window.msRequestAnimationFrame;
+    const requestAnimationFrame = window.requestAnimationFrame;
 
     let starDensity = 0.216;
     let speedCoeff = 0.05;
-    let width;
-    let height;
-    let starCount;
-    let circleRadius;
-    let circleCenter;
-    let first = true;
+    let width: number;
+    let height: number;
+    let starCount: number;
     let giantColor = "180,184,240";
     let starColor = "226,225,142";
     let cometColor = "226,225,224";
-    let canva = document.getElementById("universe");
-    let stars = ["Stop","Struggling", "with your", "Teen"];
-    let universe;
+    let canva = document.getElementById("universe") as HTMLCanvasElement | null;
+    let stars: Star[] = [];
+    let universe: CanvasRenderingContext2D | null;
 
-    function windowResizeHandler() {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      starCount = width * starDensity;
-      circleRadius = width > height ? height / 2 : width / 2;
-      circleCenter = {
-        x: width / 2,
-        y: height / 2,
-      };
+    class Star {
+      x: number = 0;
+      y: number = 0;
+      r: number = 0;
+      dx: number = 0;
+      dy: number = 0;
+      opacity: number = 0;
+      opacityThresh: number = 0;
+      do: number = 0;
+      fadingOut: boolean | null = null;
+      fadingIn: boolean = false;
+      giant: boolean = false;
+      comet: boolean = false;
 
-      if (canva) {
-        canva.setAttribute("width", width);
-        canva.setAttribute("height", height);
+      constructor() {
+        this.reset();
       }
-    }
 
-    function Star() {
-      this.reset = function () {
+      reset() {
         this.giant = getProbability(3);
-        this.comet = this.giant || first ? false : getProbability(10);
+        this.comet = this.giant ? false : getProbability(10);
         this.x = getRandInterval(0, width - 10);
         this.y = getRandInterval(0, height);
         this.r = getRandInterval(1.1, 2.6);
-        this.dx =
-          getRandInterval(speedCoeff, 6 * speedCoeff) +
-          (this.comet + 1 - 1) * speedCoeff * getRandInterval(50, 120) +
-          speedCoeff * 2;
-        this.dy =
-          -getRandInterval(speedCoeff, 6 * speedCoeff) -
-          (this.comet + 1 - 1) * speedCoeff * getRandInterval(50, 120);
+        this.dx = getRandInterval(speedCoeff, 6 * speedCoeff);
+        this.dy = -getRandInterval(speedCoeff, 6 * speedCoeff);
+        this.opacity = 0;
+        this.opacityThresh = getRandInterval(0.2, 1);
+        this.do = getRandInterval(0.0005, 0.002);
         this.fadingOut = null;
         this.fadingIn = true;
-        this.opacity = 0;
-        this.opacityTresh = getRandInterval(0.2, 1 - (this.comet + 1 - 1) * 0.4);
-        this.do = getRandInterval(0.0005, 0.002) + (this.comet + 1 - 1) * 0.001;
-      };
+      }
 
-      this.fadeIn = function () {
+      fadeIn() {
         if (this.fadingIn) {
-          this.fadingIn = this.opacity > this.opacityTresh ? false : true;
+          this.fadingIn = this.opacity > this.opacityThresh ? false : true;
           this.opacity += this.do;
         }
-      };
+      }
 
-      this.fadeOut = function () {
+      fadeOut() {
         if (this.fadingOut) {
           this.fadingOut = this.opacity < 0 ? false : true;
           this.opacity -= this.do / 2;
@@ -79,45 +66,29 @@ const Header = (props) => {
             this.reset();
           }
         }
-      };
+      }
 
-      this.draw = function () {
+      draw() {
         if (!universe) return;
 
         universe.beginPath();
 
         if (this.giant) {
-          universe.fillStyle = "rgba(" + giantColor + "," + this.opacity + ")";
+          universe.fillStyle = `rgba(${giantColor},${this.opacity})`;
           universe.arc(this.x, this.y, 2, 0, 2 * Math.PI, false);
         } else if (this.comet) {
-          universe.fillStyle = "rgba(" + cometColor + "," + this.opacity + ")";
+          universe.fillStyle = `rgba(${cometColor},${this.opacity})`;
           universe.arc(this.x, this.y, 1.5, 0, 2 * Math.PI, false);
-
-          for (var i = 0; i < 30; i++) {
-            universe.fillStyle =
-              "rgba(" +
-              cometColor +
-              "," +
-              (this.opacity - (this.opacity / 20) * i) +
-              ")";
-            universe.rect(
-              this.x - (this.dx / 4) * i,
-              this.y - (this.dy / 4) * i - 2,
-              2,
-              2
-            );
-            universe.fill();
-          }
         } else {
-          universe.fillStyle = "rgba(" + starColor + "," + this.opacity + ")";
+          universe.fillStyle = `rgba(${starColor},${this.opacity})`;
           universe.rect(this.x, this.y, this.r, this.r);
         }
 
         universe.closePath();
         universe.fill();
-      };
+      }
 
-      this.move = function () {
+      move() {
         this.x += this.dx;
         this.y += this.dy;
         if (this.fadingOut === false) {
@@ -126,24 +97,34 @@ const Header = (props) => {
         if (this.x > width - width / 4 || this.y < 0) {
           this.fadingOut = true;
         }
-      };
+      }
     }
 
-    function getProbability(percents) {
-      return Math.floor(Math.random() * 1000) + 1 < percents * 10;
+    function getProbability(percents: number): boolean {
+      return Math.random() * 100 < percents;
     }
 
-    function getRandInterval(min, max) {
+    function getRandInterval(min: number, max: number): number {
       return Math.random() * (max - min) + min;
+    }
+
+    function windowResizeHandler() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      starCount = Math.floor(width * starDensity);
+
+      if (canva) {
+        canva.width = width;
+        canva.height = height;
+      }
     }
 
     function createUniverse() {
       if (!canva) return;
       universe = canva.getContext("2d");
 
-      for (var i = 0; i < starCount; i++) {
+      for (let i = 0; i < starCount; i++) {
         stars[i] = new Star();
-        stars[i].reset();
       }
 
       draw();
@@ -153,10 +134,7 @@ const Header = (props) => {
       if (!universe) return;
       universe.clearRect(0, 0, width, height);
 
-      var starsLength = stars.length;
-
-      for (var i = 0; i < starsLength; i++) {
-        var star = stars[i];
+      for (const star of stars) {
         star.move();
         star.fadeIn();
         star.fadeOut();
@@ -167,18 +145,14 @@ const Header = (props) => {
     }
 
     windowResizeHandler();
-    window.addEventListener("resize", windowResizeHandler, false);
+    window.addEventListener("resize", windowResizeHandler);
 
     setTimeout(() => {
-      canva = document.getElementById("universe");
+      canva = document.getElementById("universe") as HTMLCanvasElement | null;
       if (canva) {
         createUniverse();
       }
     }, 100);
-
-    return () => {
-      window.removeEventListener("resize", windowResizeHandler);
-    };
   }, []);
 
   return (
@@ -212,30 +186,38 @@ const Header = (props) => {
         </div>
       </div>
 
-      <div class="content">
+      <div className="content">
       <canvas id="universe"></canvas>
       <canvas id="canvas"></canvas>
-          <div id="footer" class="fadeInUp">
+          <div className="footer">
         <svg id="scene" x="0px" y="0px" width="1600px" height="315px">
           <path id="ground" d="M0,316.4209c0,0,157.7119-35.416,469-56c7.3833-0.4883,23.7876-3.5488,31.3335-4.0166
                   c3.7681-0.2334,19.4302,0.9424,28.3335,0.3506c17.1494-1.1396,30.9072-4.2734,38.333-4.6836
                   c7.5972-0.4189,18.4058,0.3799,27.6665-0.9834c5.7075-0.8408,10.1318-4.042,14.9248-4.2705
-                  c7.8369-0.373,24.5693,3.6084,34.4087,4.2705c11.0586,0.7432,15.2656-1.8135,24.3335-2.1523c10.0576-0.376,20.4629,1.3867,28.6665,0
-                  c3.5957-0.6074,4.4194,0.4209,7.7227-0.7715c1.4927-0.5391,5.8179-3.5693,6.9438-4.2432c3.8335,0.667,6.1426-1.0732,9.917-1.167
-                  c2.2739-0.0566,3.9673-0.9072,6.249-0.9609c2.2725-0.0537,5.5547-1.2383,7.8345-1.2881c2.25-0.0498,3.498,1.0352,5.7554,0.9883
-                  c2.9648-0.0615,7.9341,0.3164,10.9111,0.2607c2.2461-0.042,2.4976-0.5195,4.7505-0.5586c2.9663-0.0518,2.1045-0.5615,5.0825-0.6074
-                  c1.5811-0.0244,6.9976,0.4131,8.582,0.3896c0.8887-0.0127,2.6113,0.373,3.5015,0.3604c1.5527-0.0215,2.2739-0.4404,3.8296-0.4609
-                  c1.416-0.0186,2.0854-0.8555,3.5039-0.873c1.0835-0.0127,2.9155,0.7939,4.0005,0.7813c1.1104-0.0127,3.5542,0.4805,4.666,0.4688
-                  c1.3047-0.0137,1.2773-0.5332,2.584-0.5459c1.415-0.0137,1.165-0.4414,2.5825-0.4541c0.916-0.0078,3.499,0.3984,4.416,0.3906
-                  c1.499-0.0127,1.833,0.6221,3.3345,0.6104c1.3296-0.0098,3.8267-0.666,5.1587-0.6748c1.3335-0.0088,2.8389-0.6514,4.1743-0.6592
-                  c1.3335-0.0078,2.4971,0.6191,3.8325,0.6123c2.5518-0.0127,7.3579,0.3965,9.9175,0.3877c5.3169-0.0176,5.5796-0.4063,10.9297-0.4063
-                  c1.8379,0,6.7031,1.3184,8.3203,1.2402c2.1055-0.1016,3.7139-1.6572,5.5283-1.7969c3.9541-0.3037,7.3262-0.5732,10.5986-0.2598
-                  c6.248,0.5977,12.1973-0.8125,21.207-0.7539c1.7266,0.0107,15.7813,3.085,17.5,3.0977c3.4014,0.0254,6.6191-1.3398,9.9971-1.3066
-                  c4.1221,0.041,8.2275,1.2529,12.3369,1.3066c2.0752,0.0273,4.1543-1.1084,6.2314-1.0771c3.3662,0.0498,4.5547,1.0166,7.9346,1.0771
-                  c2.1104,0.0381,6.4063-0.834,8.5264-0.792c2.7021,0.0537,4.4766-1.6729,7.2002-1.6113c2.9277,0.0654,7.6465,3.1641,10.6074,3.2393
-                  c4.8359,0.123,8.8809-0.9854,13.832-0.8359c2.5029,0.0752,11.8818,2.0498,14.375,2.1289c1.8398,0.0586,2.499-1.2188,4.334-1.1582
-                  c2.1689,0.0713,4.5049,1.209,6.666,1.2832c2.6699,0.0908,4.3398-0.916,6.998-0.8203c3.3379,0.1201,6.0566,1.3193,9.377,1.4453
-                  c4.001,0.1514,4.7764-1.1602,8.75-1c3.1836,0.1289,16.834,1.9912,20,2.125c4.0059,0.1699,4.0029-0.9004,7.9814-0.7227
+                  c7.8369-0.373,24.5693,3.6084,34.4087,4.2705c11.0586,0.7432,15.2656-1.8135,24.3335-2.1523
+                  c10.0576-0.376,20.4629,1.3867,28.6665,0c3.5957-0.6074,4.4194,0.4209,7.7227-0.7715
+                  c1.4927-0.5391,5.8179-3.5693,6.9438-4.2432c3.8335,0.667,6.1426-1.0732,9.917-1.167
+                  c2.2739-0.0566,3.9673-0.9072,6.249-0.9609c2.2725-0.0537,5.5547-1.2383,7.8345-1.2881
+                  c2.25-0.0498,3.498,1.0352,5.7554,0.9883c2.9648-0.0615,7.9341,0.3164,10.9111,0.2607
+                  c2.2461-0.042,2.4976-0.5195,4.7505-0.5586c2.9663-0.0518,2.1045-0.5615,5.0825-0.6074
+                  c1.5811-0.0244,6.9976,0.4131,8.582,0.3896c0.8887-0.0127,2.6113,0.373,3.5015,0.3604
+                  c1.5527-0.0215,2.2739-0.4404,3.8296-0.4609c1.416-0.0186,2.0854-0.8555,3.5039-0.873
+                  c1.0835-0.0127,2.9155,0.7939,4.0005,0.7813c1.1104-0.0127,3.5542,0.4805,4.666,0.4688
+                  c1.3047-0.0137,1.2773-0.5332,2.584-0.5459c1.415-0.0137,1.165-0.4414,2.5825-0.4541
+                  c0.916-0.0078,3.499,0.3984,4.416,0.3906c1.499-0.0127,1.833,0.6221,3.3345,0.6104
+                  c1.3296-0.0098,3.8267-0.666,5.1587-0.6748c1.3335-0.0088,2.8389-0.6514,4.1743-0.6592
+                  c1.3335-0.0078,2.4971,0.6191,3.8325,0.6123c2.5518-0.0127,7.3579,0.3965,9.9175,0.3877
+                  c5.3169-0.0176,5.5796-0.4063,10.9297-0.4063c1.8379,0,6.7031,1.3184,8.3203,1.2402
+                  c2.1055-0.1016,3.7139-1.6572,5.5283-1.7969c3.9541-0.3037,7.3262-0.5732,10.5986-0.2598
+                  c6.248,0.5977,12.1973-0.8125,21.207-0.7539c1.7266,0.0107,15.7813,3.085,17.5,3.0977
+                  c3.4014,0.0254,6.6191-1.3398,9.9971-1.3066c4.1221,0.041,8.2275,1.2529,12.3369,1.3066
+                  c2.0752,0.0273,4.1543-1.1084,6.2314-1.0771c3.3662,0.0498,4.5547,1.0166,7.9346,1.0771
+                  c2.1104,0.0381,6.4063-0.834,8.5264-0.792c2.7021,0.0537,4.4766-1.6729,7.2002-1.6113
+                  c2.9277,0.0654,7.6465,3.1641,10.6074,3.2393c4.8359,0.123,8.8809-0.9854,13.832-0.8359
+                  c2.5029,0.0752,11.8818,2.0498,14.375,2.1289c1.8398,0.0586,2.499-1.2188,4.334-1.1582
+                  c2.1689,0.0713,4.5049,1.209,6.666,1.2832c2.6699,0.0908,4.3398-0.916,6.998-0.8203
+                  c3.3379,0.1201,6.0566,1.3193,9.377,1.4453c4.001,0.1514,4.7764-1.1602,8.75-1
+                  c3.1836,0.1289,16.834,1.9912,20,2.125c4.0059,0.1699,4.0029-0.9004,7.9814-0.7227
                   c6.8594,0.3076,7.9102,1.7656,14.6855,2.0977c8.916,0.4365,23.5254-0.2432,32.293,0.2344
                   c6.7168,0.3662,13.3896,0.7432,20.0186,1.1318C1458.8545,268.4941,1680,316.4209,1680,316.4209H0z" />
           <path id="stone1" d="M680.3335,250.7549c7.3335,0.333,13.6665-1.2549,6-6.4609s-14.333-7.1221-18.6665,0.8359

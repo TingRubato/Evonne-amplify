@@ -2,13 +2,18 @@ import React from 'react';
 import SocialLinks from '../SocialLinks';
 import './Contact.css';
 // import FooterIMG from "../../assets/Images/evonne-weinhaus-fast-solutiuons.png";
-const Contact = props => {
-  const handleSubmit = (e) => {
+
+interface ContactProps {
+  // Add any props if needed
+}
+
+const Contact: React.FC<ContactProps> = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const message = form.message.value;
+    const form = e.currentTarget;
+    const name = (form.elements.namedItem('name') as HTMLInputElement).value;
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value;
+    const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value;
 
     const mailtoLink = `mailto:evonne@evonneweinhaus.com?subject=Contact%20Form%20Submission%20to%20Evonne&body=Name:%20${encodeURIComponent(
       name
@@ -29,8 +34,8 @@ const Contact = props => {
             </p>
             <p className="separator" />
             <div className='social'>
-        <SocialLinks />
-        </div>
+              <SocialLinks />
+            </div>
 
             <p className="subtitle">
               Please, use the form below or send an email to {''}
@@ -48,7 +53,7 @@ const Contact = props => {
         <form id="contact-form" onSubmit={handleSubmit}>
           <input placeholder="Name" name="name" type="text" required />
           <input placeholder="Email" name="email" type="email" required />
-          <textarea placeholder="Message" type="text" name="message" />
+          <textarea placeholder="Message" name="message" />
           <input className="button" id="submit" value="Submit" type="submit" />
         </form>
       </div>

@@ -1,6 +1,20 @@
 import React from 'react';
-const FreeResource = props => {
-  const tech = {
+
+interface TechIcons {
+  [key: string]: string;
+}
+
+interface FreeResourceProps {
+  link?: string;
+  repo?: string;
+  img: string;
+  title: string;
+  tech: string;
+  children?: React.ReactNode;
+}
+
+const FreeResource: React.FC<FreeResourceProps> = props => {
+  const tech: TechIcons = {
     facebook: 'fab fa-facebook-square',
     youtube: 'fab fa-youtube'
   };

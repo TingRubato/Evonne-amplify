@@ -1,10 +1,13 @@
 import React from 'react';
 import './Book.css';
 
-const Book = props => {
+interface BookProps {
+  // Add any props here if needed
+}
+
+const Book: React.FC<BookProps> = () => {
   return (
     <section id="book">
-      
       <div className="book-container">
         <div className="heading">
           <h3 className="title">About <i>Stop Struggling with Your Teen</i></h3>

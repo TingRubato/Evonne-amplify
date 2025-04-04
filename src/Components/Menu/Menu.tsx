@@ -1,8 +1,12 @@
-import React from 'react';
 import SocialLinks from '../SocialLinks';
 import './Menu.css';
 
-const Menu = props => {
+interface MenuProps {
+  showMenu: string;
+  toggleMenu: () => void;
+}
+
+const Menu = (props: MenuProps): JSX.Element => {
   return (
     <div className={`menu-container ${props.showMenu}`}>
       <div className="overlay" />

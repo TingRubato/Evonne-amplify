@@ -1,6 +1,10 @@
 import React from 'react';
 
-const SocialLinks = props => {
+interface SocialLinksProps {
+  // Add any props if needed
+}
+
+const SocialLinks: React.FC<SocialLinksProps> = () => {
   return (
     <div className="social">
       <a
@@ -39,7 +43,7 @@ const SocialLinks = props => {
       >
         {' '}
         <i className="fab fa-instagram" />
-        </a>
+      </a>
       <a
         href="emailto:evonne.weinhaus@me.com"
         target="_blank"

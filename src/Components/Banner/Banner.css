@@ -107,21 +107,20 @@
 
 /* Top Bar */
 #banner .top-left {
-  grid-column: 1 / 5;
+  grid-column: 1 / -1 ;
   grid-row: 1;
-  align-self: start;
+  align-self: center;
 }
 
 #banner .top-left h2 {
   font-size: 2rem;
-  /* padding-right: 20px; */
   font-weight: 400;
   color: var(--color-text-primary);
 }
 
 #banner .top-right {
-  grid-column: 10 / 13;
-  grid-row: ;
+  grid-column: 5 / 13;
+  grid-row: 1;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -350,4 +349,61 @@
   font-size: 1rem;
   margin-top: 2rem;
   color: var(--color-text-primary);
+}
+
+@media screen and (max-width: 1200px) {
+  #banner .container {
+    padding: 8rem;
+  }
+  
+  #banner .books-wrapper {
+    gap: 2rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #banner .container {
+    padding: 4rem;
+  }
+  
+  #banner .books__container {
+    width: 180px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #banner .main-content {
+    grid-template-columns: 1fr;
+  }
+
+  #banner .left-text,
+  #banner .right-text {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  #banner .books-wrapper {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  #banner .top-left h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #banner .container {
+    padding: 2rem;
+  }
+
+  #banner .top-left,
+  #banner .top-right {
+    text-align: center;
+  }
+
+  #banner .top-right {
+    justify-content: center;
+    margin-top: 1rem;
+  }
 }

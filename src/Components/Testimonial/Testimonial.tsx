@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Testimonial.css";
 import $ from "jquery";
 
@@ -7,7 +7,7 @@ const Testimonial = () => {
 
   useEffect(() => {
     $(document).ready(function() {
-      var oldId = null;
+      let oldId: number | null = null;
 
       $(".tabs-controls-link").click(function(e) {
         e.preventDefault();
@@ -23,7 +23,7 @@ const Testimonial = () => {
         );
         $(this).addClass("tabs-controls-link-active");
 
-        if (newId < oldId) {
+        if (oldId === null || newId < oldId) {
           // item is hidden
           var timing = $(".card.hidden").length * 100;
           $(".card").each(function(index) {
@@ -67,7 +67,7 @@ const Testimonial = () => {
   return (
     <section id="testimonial">
       <section className="cards-container">
-        <div className="card card-current" id="1">
+        <div className={`card card-current ${currentId === 1 ? 'active' : ''}`} id="1">
           <br />
           <p>
             Evonne has rightfully earned a reputationas the kind of motivational

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { gsap } from "gsap";
 import CustomEase from "gsap/CustomEase";
 import "./Banner.css";
@@ -11,7 +11,7 @@ const Banner = () => {
     // Apply hover animations to each book item
     const books = document.querySelectorAll(".books__item");
     books.forEach((book) => {
-      const hitbox = book.querySelector(".books__hitbox");
+      const hitbox = book.querySelector(".books__hitbox") as HTMLElement;
       const bookImage = book.querySelector(".books__image");
       const bookEffect = book.querySelector(".books__effect");
       const pages = book.querySelectorAll(".books__page");
@@ -114,82 +114,82 @@ const Banner = () => {
 
   return (
     <section id="banner">
-      <div class="container">
-        <div class="top-left">
+      <div className="container">
+        <div className="top-left">
           <h2>Stop Struggling with Your Teen</h2>
         </div>
-        <div class="top-right">
-          <div class="circle circle1"></div>
-          <div class="circle circle2"></div>
+        <div className="top-right">
+          <div className="circle circle1"></div>
+          <div className="circle circle2"></div>
         </div>
-        <div class="main-content">
-          <div class="left-text">
+        <div className="main-content">
+          <div className="left-text">
           <p>Authored by</p>
             <h2>Evonne Weinhaus</h2>
             <p>
             "The short of it: My mission is to provide a clear path for parents to reconnect with their teens. I have over 30 years of expertise to draw from. With this ground- breaking book, I have educated hundreds of thousands of parents, and the Stop Struggling book series has sold over 250,000 copies plus won the Child’s Magazine award for Excellence in Family Issues."
             </p>
           </div>
-          <div class="books-wrapper">
-            <div class="books__item">
-              <div class="books__container">
-                <div class="books__cover">
-                  <div class="books__back-cover"></div>
-                  <div class="books__inside">
-                    <div class="books__page"></div>
-                    <div class="books__page"></div>
-                    <div class="books__page"></div>
+          <div className="books-wrapper">
+            <div className="books__item">
+              <div className="books__container">
+                <div className="books__cover">
+                  <div className="books__back-cover"></div>
+                  <div className="books__inside">
+                    <div className="books__page"></div>
+                    <div className="books__page"></div>
+                    <div className="books__page"></div>
                   </div>
-                  <div class="books__image">
+                  <div className="books__image">
                     <img
                       src={oldCover}
                       alt="Published in March 1, 1988"
                     />
-                    <div class="books__effect"></div>
-                    <div class="books__light"></div>
+                    <div className="books__effect"></div>
+                    <div className="books__light"></div>
                   </div>
-                  <div class="books__hitbox" data-book-index="0"></div>
+                  <div className="books__hitbox" data-book-index="0"></div>
                 </div>
               </div>
-              <div class="books__title">
+              <div className="books__title">
                 originally republished on 
                 <br />
                 March 1, 1988
                 </div>
             </div>
-            <div class="books__item">
-              <div class="books__container">
-                <div class="books__cover">
-                  <div class="books__back-cover"></div>
-                  <div class="books__inside">
-                    <div class="books__page"></div>
-                    <div class="books__page"></div>
-                    <div class="books__page"></div>
+            <div className="books__item">
+              <div className="books__container">
+                <div className="books__cover">
+                  <div className="books__back-cover"></div>
+                  <div className="books__inside">
+                    <div className="books__page"></div>
+                    <div className="books__page"></div>
+                    <div className="books__page"></div>
                   </div>
-                  <div class="books__image">
+                  <div className="books__image">
                     <img
                       src={republishedCover}
                       alt="Psychedelics and Mental Health by Irene de Caso"
                     />
-                    <div class="books__effect"></div>
-                    <div class="books__light"></div>
+                    <div className="books__effect"></div>
+                    <div className="books__light"></div>
                   </div>
-                  <div class="books__hitbox" data-book-index="1"></div>
+                  <div className="books__hitbox" data-book-index="1"></div>
                 </div>
               </div>
-              <div class="books__title">
+              <div className="books__title">
                 republished on<br />
                 March 25, 2019</div>
             </div>
           </div>
-          <div class="right-text">
+          <div className="right-text">
             <h2>Featured in</h2>
             <p>
            PUBLISHER'S WEEKLY,<br></br> LIBRARY JOURNAL,<br></br> CHRISTIAN SCIENCE MONITOR, and<br></br>KNIGHT RYDER SYNDICATE
            </p>
           </div>
         </div>
-        <div class="bottom-center">
+        <div className="bottom-center">
           <a>Get a Free Sample</a>
         </div>
       </div>

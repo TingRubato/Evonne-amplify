@@ -1,38 +1,38 @@
-import React from "react";
+import { FC } from "react";
 import "./Preview.css";
 
-const Preview = (props) => {
+const Preview: FC = () => {
   return (
 	<section id="preview">
 					<div className="heading">
 									<h3 className="title">Get a Preview Copy</h3>
 			<p className="separator" />
 		</div>
-    <div class="preview">
-				<ul class="align">
+	<div className="preview">
+				<ul className="align">
 					<li>
-						<figure class='book'>
-							<ul class='hardcover_front'>
+						<figure className='book'>
+							<ul className='hardcover_front'>
 								<li>
-									<div class="coverDesign blue">
+									<div className="coverDesign blue">
 									</div>
 								</li>
 								<li></li>
 							</ul>
-							<ul class='page'>
+							<ul className='page'>
 								<li></li>
 								<li>
-									<a class="btn" href="#">Download</a>
+									<a className="btn" href="#">Download</a>
 								</li>
 								<li></li>
 								<li></li>
 								<li></li>
 							</ul>
-							<ul class='hardcover_back'>
+							<ul className='hardcover_back'>
 								<li></li>
 								<li></li>
 							</ul>
-							<ul class='book_spine'>
+							<ul className='book_spine'>
 								<li></li>
 								<li></li>
 							</ul>

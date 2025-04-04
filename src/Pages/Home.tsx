@@ -8,11 +8,10 @@ import Testimonial from "../Components/Testimonial/Testimonial";
 import Client from "../Components/Clients/Client";
 import Banner from "../Components/Banner/Banner";
 import FreeResources from "../Components/FreeResources/FreeResources";
-// import Footer from "./Components/Footer/Footer";
 import Contact from "../Components/Contact/Contact";
 
-const Home = () => (
-  <body>
+const Home: React.FC = () => (
+  <>
     <Header />
     <About />
     <Banner />
@@ -23,7 +22,7 @@ const Home = () => (
     <Client />
     <FreeResources />
     <Contact />
-  </body>
+  </>
 );
 
 export default Home;

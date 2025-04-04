@@ -3,7 +3,12 @@ import FreeResource from "./FreeResource";
 import "./FreeResources.css";
 import youtubeImage from "./images/youtube.png";
 import facebook from "./images/facebook.png";
-const FreeResources = (props) => {
+
+interface FreeResourcesProps {
+  // Define any props you want to pass to the component
+}
+
+const FreeResources: React.FC<FreeResourcesProps> = () => {
   return (
     <section id="free-resources">
       <div className="heading">

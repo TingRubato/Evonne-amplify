@@ -1,25 +1,19 @@
-import { useEffect, useState } from "react";
-import type { Schema } from "../amplify/data/resource";
-import { generateClient } from "aws-amplify/data";
+import { useState } from "react";
 import Home from "./Pages/Home";
-import Nav from "./Components/Nav";
-const client = generateClient<Schema>();
+import Menu from "./Components/Menu/Menu";
+import Nav from "./Components/Nav/Nav";
 
 function App() {
-  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
+  const [showMenu, setShowMenu] = useState(""); // 控制菜单显示状态
 
-  useEffect(() => {
-    client.models.Todo.observeQuery().subscribe({
-      next: (data) => setTodos([...data.items]),
-    });
-  }, []);
-
-  function createTodo() {
-    client.models.Todo.create({ content: window.prompt("Todo content") });
-  }
+  const toggleMenu = () => {
+    setShowMenu(showMenu === "active" ? "" : "active");
+  };
 
   return (
     <main>
+      <Nav showMenu="" toggleMenu={toggleMenu} />
+       <Menu showMenu={showMenu} toggleMenu={toggleMenu} />
       <Home />
     </main>
   );
