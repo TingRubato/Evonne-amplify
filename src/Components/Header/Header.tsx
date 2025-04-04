@@ -179,7 +179,7 @@ const Header: React.FC = () => {
         <h2>STOP STRUGGLING WITH YOUR TEEN</h2>
         <h3>A complete and easy-to-use guide from Evonne Weinhaus</h3>
         <div className="buttons">
-          <a href="#projects">About</a>
+          <a href="#about">About</a>
           <a href="https://learning.evonneweinhaus.com" className="cta">
             Student Portal
           </a>
@@ -187,8 +187,9 @@ const Header: React.FC = () => {
       </div>
 
       <div className="content">
-      <canvas id="universe"></canvas>
-      <canvas id="canvas"></canvas>
+      <canvas id="universe">
+
+      <canvas id="canvas"></canvas></canvas>
           <div className="footer">
         <svg id="scene" x="0px" y="0px" width="1600px" height="315px">
           <path id="ground" d="M0,316.4209c0,0,157.7119-35.416,469-56c7.3833-0.4883,23.7876-3.5488,31.3335-4.0166
