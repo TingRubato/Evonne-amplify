@@ -191,8 +191,8 @@
 #welcome-section .container {
   position: absolute;
   top: 50%;
-  left: 20%;
-  width: 50vw;
+  left: 25%;
+  width: 45vw;
   opacity: 0;
   transform: translate(0, -50%);
   animation: text-fade-in 1000ms 800ms forwards;
