@@ -5,10 +5,11 @@ import AuthorImage from "../../assets/Images/evonne-bg.png";
 const Author: React.FC = () => {
   return (
     <section id="author">
+      <article>
+
       <div className="wrapper">
   
         <div className="author-content">
-          <article>
           <div className="desc">
                 <img
                   className="image-fluid"
@@ -148,9 +149,10 @@ const Author: React.FC = () => {
                 </p>
                 </div>
             </div>
-          </article>
         </div>
       </div>
+      </article>
+
     </section>
   );
 };

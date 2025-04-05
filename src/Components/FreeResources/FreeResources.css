@@ -90,6 +90,7 @@
 #free-resources .free-resource-group {
   overflow: hidden;
   transition: max-height 0.5s ease-in-out; /* 平滑过渡 */
+  padding-bottom: 20%;
 }
 
 #free-resources free-resource-group.collapsed {
@@ -101,7 +102,7 @@
   margin: auto 0;
   color: #252934;
   margin: 2rem;
-  max-width: 15vw;
+  max-width: 10vw;
   aspect-ratio: 1/1;
   overflow: hidden;
   text-align: center;
@@ -109,6 +110,8 @@
   border: 1px solid #fafafa;
   box-shadow: 0 20px 10px -10px #25293450;
   transition: 300ms;
+  width: 50%;
+  transform: translateX(10%);
 }
 
 #free-resources .free-resource .free-resource-link:hover {

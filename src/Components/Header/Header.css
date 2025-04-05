@@ -46,7 +46,7 @@
 
 .forest {
   position: relative;
-  bottom: -50vh;
+  /* bottom: -50vh; */
   background: url(../../assets/Images/bg-f.png) bottom left repeat-x;
   width: 100%;
   height: 100%;
@@ -67,12 +67,11 @@
 
 .silhouette {
   position: absolute;
-  bottom: 0%;
   background: url(../../assets/Images/evonne-figure.png) bottom left no-repeat;
   background-size: 40%;
-  width: 100%;
-  height: 100%;
-  z-index: 20; /* Reduced from 1003 to 20 to allow clicking on elements with z-index 1002 */
+  bottom: 0;
+  height: 95%;
+  z-index: 20;
   opacity: 0;
   animation: silhouette-move-in 1000ms 800ms forwards;
 }
@@ -297,7 +296,7 @@
 
   .silhouette {
     background-size: min(50%, 300px);
-    transform: translateY(5%);
+    /* transform: translateY(5%); */
   }
   
   .moon {

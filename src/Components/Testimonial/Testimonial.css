@@ -1,10 +1,11 @@
 #testimonial {
+    padding: 2rem;
     min-height: 70vh;
-    font-size: 1.4rem;
+    font-size: 1rem;
     position: relative;
-    background: #fafafa;
+    background: #ffffff;
     z-index: 0;
-    padding-bottom: 50px;
+    /* padding-bottom: 50px; */
 }
 
 #testimonial .tabs-controls {
@@ -21,6 +22,8 @@
 
 #testimonial .tabs-controls-link {
     position: relative;
+    box-sizing: border-box;
+
     display: inline;
     padding: 16px 32px;
     font-size: 18px;
@@ -34,6 +37,8 @@
 #testimonial .tabs-controls-link:after {
     position: absolute;
     left: 0;
+    box-sizing: border-box;
+
     right: 0;
     bottom: 0;
     display: block;
@@ -76,7 +81,7 @@
 }
 
 .card h1 {
-    margin: 0;
+    margin: 2rem;
     text-align: right;
     font-size: 26px;
     line-height: 1;
@@ -84,7 +89,7 @@
 }
 
 .card p {
-    margin: 1vh 0;
+    margin: 2rem;
     font-size: 22px;
     line-height: 1.5;
     color: #423e37;
@@ -192,6 +197,7 @@
 @media (max-width: 768px) {
     #testimonial .tabs-controls {
         flex-direction: column;
+        width: fit-content;
         padding: 20px 0;
     }
 
