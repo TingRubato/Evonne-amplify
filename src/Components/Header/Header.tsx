@@ -23,7 +23,7 @@ const Header: React.FC = () => {
     const sSize = .4;                 // minimum size of Star
     const sSizeR = .9;                // randomness of the size of Stars
     const sAlphaR = .6;               // randomness of alpha for stars
-    const sMaxHueProportion = .8;     // max proportion of displayed base hue
+    // const sMaxHueProportion = .8;     // max proportion of displayed base hue
     // Shooting stars parameters
     const shootingStarDensity = 0.01;
     const shootingStarBaseXspeed = 30;
