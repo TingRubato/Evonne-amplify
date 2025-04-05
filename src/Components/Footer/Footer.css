@@ -9,11 +9,11 @@ footer {
 footer .wrapper {
   display: flex;
   width: 100%;
-  padding: 5rem 3rem 3rem 5rem;
+  padding: 8rem 3rem 3rem 5rem;
   margin-top: -3rem;
   align-items: center;
   /* justify-content: space-between; */
-  z-index: 3;
+  z-index: 1;
   background-color: #ffffff;
 }
 
@@ -68,7 +68,7 @@ footer .wrapper {
   }
 
   footer .wrapper {
-    /* padding: 0.8rem; */
+    padding: 1rem;
   }
 
   footer .wrapper h3 {

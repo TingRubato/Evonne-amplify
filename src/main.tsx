@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+// import { BrowserRouter } from "react-router-dom";
+
 import App from "./App.tsx";
 // import "./Components/Footer/Footer.css"
 import "./index.css";
@@ -12,7 +14,8 @@ Amplify.configure(outputs);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-      <Nav showMenu="" toggleMenu={() => {}} />    <App />
+      <Nav showMenu="" toggleMenu={() => {}} />
+      <App />
     <Footer />
   </React.StrictMode>
 );

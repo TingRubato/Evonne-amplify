@@ -15,6 +15,29 @@
   text-align: center;
   margin: 1rem auto;
 }
+#free-resources .expand-button {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #00b1b2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+#free-resources .expand-button:hover {
+  background-color: #008a8b;
+}
+
+
+#free-resources .expand-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
 #free-resources a,
 #free-resources a:visited {
@@ -65,17 +88,21 @@
 }
 
 #free-resources .free-resource-group {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out; /* 平滑过渡 */
 }
 
+#free-resources free-resource-group.collapsed {
+  max-height: 200px; /* 折叠时的最大高度 */
+}
 /* Project Image */
 #free-resources .free-resource .free-resource-link {
   display: block;
   margin: auto 0;
   color: #252934;
-  max-width: 20vw;
+  margin: 2rem;
+  max-width: 15vw;
+  aspect-ratio: 1/1;
   overflow: hidden;
   text-align: center;
   border-radius: 50%;
@@ -95,8 +122,8 @@
 
 #free-resources .free-resource .free-resource-image {
   transform: scale(1.2);
-  filter: saturate(0);
   width: 100%;
+  filter: saturate(0);
   transition: all 300ms;
 }
 
@@ -136,7 +163,7 @@
 
 /* Buttons */
 #free-resources .free-resource-details .buttons {
-  display: flex;
+  display: none;
   justify-content: space-between;
   margin-bottom: 1rem;
 }

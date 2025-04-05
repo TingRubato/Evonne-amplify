@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Home from "./Pages/Home";
 import Menu from "./Components/Menu/Menu";
+import SpeakingPage from "./Pages/SpeakingPage";
+import UpsellPage from "./Pages/UpsellPage";
 import Nav from "./Components/Nav/Nav";
 
 function App() {
@@ -12,10 +15,16 @@ function App() {
 
   return (
     <main>
+      <BrowserRouter>
       <Nav showMenu="" toggleMenu={toggleMenu} />
-       <Menu showMenu={showMenu} toggleMenu={toggleMenu} />
-      <Home />
-    </main>
+      <Menu showMenu={showMenu} toggleMenu={toggleMenu} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/speakings" element={<SpeakingPage />} />
+        <Route path="/upsell" element={<UpsellPage />} />
+      </Routes>
+      </BrowserRouter>
+      </main>
   );
 }
 

@@ -16,7 +16,7 @@ const Testimonial = () => {
           return false;
         }
 
-        var newId = parseInt($(this).data("id"), 10);
+        const newId = parseInt($(this).data("id"), 10);
         setCurrentId(newId);
         $(".tabs-controls-link-active").removeClass(
           "tabs-controls-link-active"
@@ -25,7 +25,7 @@ const Testimonial = () => {
 
         if (oldId === null || newId < oldId) {
           // item is hidden
-          var timing = $(".card.hidden").length * 100;
+          const timing = $(".card.hidden").length * 100;
           $(".card").each(function(index) {
             if (index > newId - 1 || index == newId - 1) {
               window.setTimeout(function() {

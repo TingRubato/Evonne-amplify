@@ -1,0 +1,370 @@
+/* General Styles */
+#upsell {
+  height: 100%;
+  min-height: 100vh;
+  font-size: 1.4rem;
+  position: relative;
+  z-index: 1;
+  background: #fafafa url(../assets/Images/Author_BG.png) center right no-repeat;
+  background-attachment: fixed;
+  --primary-inv: #333;
+  color: #333;
+}
+
+#upsell .wrapper {
+  padding: 10rem 5rem;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+/* Title Section */
+#upsell .title {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+#upsell .title h3 {
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: #00b1b2;
+  margin-bottom: 1.5rem;
+}
+
+#upsell .title h4 {
+  margin-top: 1rem;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+#upsell .title ul {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+#upsell .separator {
+  background: #f300b4;
+  width: 120px;
+  align-self: center;
+  height: 3px;
+  margin: 1.5rem 0;
+  animation: pulse-grow 20s infinite ease-in-out;
+}
+
+@keyframes pulse-grow {
+  0%, 100% {
+    width: 120px;
+  }
+  50% {
+    width: 50vw;
+  }
+}
+
+#upsell .subtitle {
+  font-size: 1.8rem;
+  text-align: center;
+  color: #666;
+  padding-bottom: 1.5rem;
+}
+
+/* Paragraphs and Lists */
+#upsell p {
+  padding-bottom: 1.5rem;
+  color: #555;
+  line-height: 2rem;
+  text-align: justify;
+}
+
+#upsell li {
+  list-style: circle;
+  padding-bottom: 1.5rem;
+  color: #555;
+  line-height: 2rem;
+  text-align: left;
+  margin-left: 2.5rem;
+}
+
+/* Description Sections */
+#upsell .desc {
+  background: #ffffffcc;
+  padding: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: 3rem;
+}
+
+#upsell .desc.full {
+  grid-column: 1 / -1;
+  margin-bottom: 3rem;
+  text-align: left;
+}
+
+#upsell .desc img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+/* Hyperlink Styles */
+#upsell .hyperlink {
+  text-decoration: underline;
+  color: var(--primary-inv);
+  transition: color 0.3s ease-in-out;
+  font-size: 1.8rem;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  margin: 0.5rem;
+  overflow: hidden;
+}
+
+#upsell .hyperlink:hover {
+  color: #00b1b2;
+}
+
+
+#upsell .testimonial-item {
+  z-index: 30;
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  margin: 4rem auto;
+  max-width: 200px;
+  padding: 2.5rem;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+#upsell .testimonial:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+#upsell .testimonial pic img {
+  height: 80px;
+  margin-bottom: 1.5rem;
+  border-radius: 50%;
+  
+}
+
+#upsell .testimonial p {
+  font-size: 1.4rem;
+  color: #555;
+  line-height: 1.8rem;
+}
+
+/* FAQ Section */
+#upsell .faq {
+  margin-top: 3rem;
+}
+
+#upsell .faq-item {
+  margin-bottom: 2rem;
+}
+
+#upsell .faq-item h4 {
+  font-size: 1.8rem;
+  color: #00b1b2;
+  margin-bottom: 1rem;
+}
+
+#upsell .faq-item p {
+  font-size: 1.4rem;
+  color: #555;
+  line-height: 1.8rem;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 1149px) {
+  #upsell .wrapper {
+    padding: 12rem 4rem;
+  }
+
+  #upsell .title h3 {
+    font-size: 2.4rem;
+  }
+
+  #upsell .title h4 {
+    font-size: 1.8rem;
+  }
+
+  #upsell .hyperlink {
+    font-size: 1.6rem;
+  }
+}
+
+@media only screen and (max-width: 949px) {
+  #upsell {
+    background-position: top left;
+    background-size: cover;
+  }
+
+  #upsell .title h3 {
+    font-size: 2rem;
+  }
+
+  #upsell .hyperlink {
+    font-size: 1.6rem;
+  }
+}
+
+@media only screen and (max-width: 649px) {
+  #upsell .wrapper {
+    padding: 5rem 2rem;
+  }
+
+  #upsell .title h3 {
+    font-size: 1.8rem;
+  }
+
+  #upsell .title ul {
+    margin: 1rem;
+  }
+
+  #upsell img {
+    width: fit-content;
+    padding: 10rem 5rem;
+  }
+}
+
+/* New testimonial styles */
+#upsell .testimonial {
+
+}
+
+
+/* New testimonial styles */
+#upsell .testimonial container {
+  margin: 80px 30px;
+  padding: 30px 40px;
+  border-radius: 30px;
+  position: relative;
+  z-index: 1;
+  color: #F2EFE8;
+  text-align: center;
+  box-shadow: none;
+  background: transparent;
+}
+
+#upsell .testimonial:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+  border-radius: 30px;
+  z-index: -1;
+}
+
+#upsell .testimonial:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #FB8C00;
+  border-radius: 30px;
+  transform: rotate(-7deg);
+  z-index: -2;
+}
+
+#upsell .testimonial .pic {
+  border: 5px solid #F2EFE8;
+  display: inline-block;
+  margin-bottom: 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+#upsell .testimonial .pic img {
+  max-width: 10vw;
+  border-radius: 50%;
+}
+
+#upsell .testimonial .testimonial-content {
+  font-size: 15px;
+  letter-spacing: 1px;
+  line-height: 30px;
+  margin-bottom: 20px;
+  color: #F2EFE8;
+  text-align: center;
+}
+
+#upsell .testimonial .testimonial-title a {
+  display: inline-block;
+  color: #FB8C00;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+#upsell .testimonial .testimonial-title small {
+  color: #F2EFE8;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+}
+
+/* General overrides */
+#upsell {
+  background-color: #F2EFE8 !important;
+  margin-top: 30px !important;
+}
+
+#upsell h3, 
+#upsell p {
+  margin: 0 !important;
+}
+
+#upsell a:hover,
+#upsell a:focus {
+  text-decoration: none !important;
+  outline: none !important;
+}
+
+/* Owl carousel controls */
+#upsell .owl-theme .owl-controls {
+  margin-top: 0px;
+  margin-left: 10px;
+  text-align: center;
+}
+
+#upsell .owl-theme .owl-controls .owl-buttons div {
+  display: inline-block;
+  opacity: 1;
+  background: #FB8C00;
+  color: #F2EFE8;
+  border-radius: 0;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin-right: 5px;
+}
+
+#upsell .owl-prev:before,
+#upsell .owl-next:before {
+  content: "\f060";
+  font-family: 'FontAwesome';
+  font-size: 20px;
+}
+
+#upsell .owl-next:before {
+  content: "\f061";
+}

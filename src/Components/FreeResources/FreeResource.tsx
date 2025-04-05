@@ -1,23 +1,23 @@
 import React from 'react';
 
-interface TechIcons {
-  [key: string]: string;
-}
+// interface TechIcons {
+//   [key: string]: string;
+// }
 
 interface FreeResourceProps {
   link?: string;
   repo?: string;
   img: string;
   title: string;
-  tech: string;
+  // tech: string;
   children?: React.ReactNode;
 }
 
 const FreeResource: React.FC<FreeResourceProps> = props => {
-  const tech: TechIcons = {
-    facebook: 'fab fa-facebook-square',
-    youtube: 'fab fa-youtube'
-  };
+  // const tech: TechIcons = {
+  //   facebook: 'fab fa-facebook-square',
+  //   youtube: 'fab fa-youtube'
+  // };
 
   const link = props.link || 'http://';
   const repo = props.repo || 'http://';
@@ -29,11 +29,11 @@ const FreeResource: React.FC<FreeResourceProps> = props => {
       </a>
       <div className="free-resource-details">
         <div className="free-resource-tile">
-          <p className="icons">
+          {/* <p className="icons">
             {props.tech.split(' ').map(t => (
               <i className={tech[t]} key={t} />
             ))}
-          </p>
+          </p> */}
           {props.title}{' '}
         </div>
         {props.children}

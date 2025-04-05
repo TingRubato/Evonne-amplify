@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import FreeResource from "./FreeResource";
 import "./FreeResources.css";
 import youtubeImage from "./images/youtube.png";
 import facebook from "./images/facebook.png";
 
-interface FreeResourcesProps {
-  // Define any props you want to pass to the component
-}
 
-const FreeResources: React.FC<FreeResourcesProps> = () => {
+const FreeResources: React.FC = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const groupRef = useRef<HTMLDivElement>(null);
+
+  const toggleExpand = () => {
+    setIsExpanded((prev) => !prev);
+  };
+
+  useEffect(() => {
+    if (groupRef.current) {
+      if (isExpanded) {
+        groupRef.current.style.maxHeight = `${groupRef.current.scrollHeight}px`; // 动态设置高度
+      } else {
+        groupRef.current.style.maxHeight = "200px"; // 折叠时的高度
+      }
+    }
+  }, [isExpanded]);
+
   return (
     <section id="free-resources">
       <div className="heading">
@@ -21,7 +35,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Welcome to Evonne Weinhaus YouTube Channel."
             img={youtubeImage}
-            tech="youtube"
+            // tech="youtube"
             link="https://www.youtube.com/watch?v=7O3lAWTv5xo"
           >
             <small>
@@ -37,7 +51,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Methods of Discipline"
             img={youtubeImage}
-            tech="youtube"
+            // tech="youtube"
             link="https://www.youtube.com/watch?v=elGVb1tDWq0"
           >
             <small>
@@ -50,7 +64,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="What Use to Stop Me From Writing My Book -- Stop Struggling With Your Teen"
             img={youtubeImage}
-            tech="youtube"
+            // tech="youtube"
             link="https://www.youtube.com/watch?v=QzKuGpBr1l8"
           >
             <small>
@@ -63,7 +77,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Vaping: How To StartTalking About it"
             img={youtubeImage}
-            tech="youtube"
+            // tech="youtube"
             link="https://www.youtube.com/watch?v=i0OdTrw91XE"
           >
             <small>
@@ -76,7 +90,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Vaping: How to Talk About it, Pt. 2"
             img={youtubeImage}
-            tech="youtube"
+            // tech="youtube"
             link="https://www.youtube.com/watch?v=-c40aiy_eFU"
           >
             <small>
@@ -89,7 +103,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Vaping: What are the 8 L's?"
             img={youtubeImage}
-            tech="youtube"
+            // tech="youtube"
             link="https://www.youtube.com/watch?v=ML_H8eYgP0M"
           >
             <small>
@@ -102,7 +116,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="7 Words to Change Your Relationship"
             img={youtubeImage}
-            tech="youtube"
+            // tech="youtube"
             link="https://www.youtube.com/watch?v=gZGiIhpDrro"
           >
             <small>
@@ -111,21 +125,22 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
             </small>
             <p></p>
           </FreeResource>
-
           <FreeResource
             title="Warning!"
             img={youtubeImage}
-            tech="youtube"
+            // tech="youtube"
             link="https://www.youtube.com/watch?v=hEGwZ1MsLPg"
           >
             <small>Using the word, "warning"</small>
             <p></p>
           </FreeResource>
+          {isExpanded && (
+            <>
 
           <FreeResource
             title="What to Do About Peer Pressure"
             img={youtubeImage}
-            tech="youtube"
+            // tech="youtube"
             link="https://www.youtube.com/watch?v=Qb2GymRFrsw"
           >
             <small>
@@ -138,7 +153,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Limiting Screen Time: Protecting or Punishing?"
             img={youtubeImage}
-            tech="youtube"
+            // tech="youtube"
             link="https://www.youtube.com/watch?v=jCOcTIqU5Kk"
           >
             <small>
@@ -151,7 +166,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Limiting Screen Time: Don't Use Your Mouth, Use Your Routine"
             img={youtubeImage}
-            tech="youtube"
+            // tech="youtube"
             link="https://www.youtube.com/watch?v=ZlJTrUApeEc"
           >
             <small>Changing routines</small>
@@ -161,7 +176,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="#2 Aha Moment"
             img={youtubeImage}
-            tech="youtube"
+            // tech="youtube"
             link="https://www.youtube.com/watch?v=E9O9ZBkSJ80"
           >
             <small>
@@ -171,13 +186,15 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
             </small>
             <p></p>
           </FreeResource>
+          </>
+          )}
         </div>
-        <div className="FreeResource-group">
+        <div className="free-resource-group">
           <p className="subcaption">Facebook Audio</p>
           <FreeResource
             title="Week 1: Quick Parenting Solutions"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/10155907366698019/"
           >
             <small>
@@ -191,7 +208,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 2: Quick Parenting Solutions"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/10155923284513019/"
           >
             <small>
@@ -203,7 +220,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 3: Quick Parenting Solutions"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/10155937655103019/"
           >
             <small>
@@ -217,7 +234,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 3: Quick Parenting Solutions"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/10155937655103019/"
           >
             <small>
@@ -231,7 +248,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 4: Quick Parenting Solutions"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/10155958875563019/"
           >
             <small>
@@ -242,7 +259,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 5: Quick Parenting Solutions"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/10155972881633019/"
           >
             <small>
@@ -254,7 +271,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 6: Quick Parenting Solutions"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/282738078981141/"
           >
             <small>
@@ -266,7 +283,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 7: Quick Parenting Solutions"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/315269719233099/"
           >
             <small>
@@ -275,10 +292,12 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
             </small>
           </FreeResource>
 
+          {isExpanded && (
+            <>
           <FreeResource
             title="Week 8: Quick Parenting Solutions"
             img={facebook}
-            tech="facebook"
+            // // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/518350761943727/"
           >
             <small>
@@ -291,7 +310,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 9: Quick Parenting Solutions"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/2203344356544628/"
           >
             <small>
@@ -304,7 +323,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 10: Quick Parenting Solutions"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/316263392468407/"
           >
             <small>
@@ -317,7 +336,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 11: Quick Parenting Solutions"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/537938646660054/"
           >
             <small>
@@ -329,7 +348,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 12: Quick Parenting Solutions - Applying Tuesday Tips"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/1014954595350708/"
           >
             <small>
@@ -341,7 +360,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 13: Quick Parenting Solutions - Applying Tuesday Tips"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/595150460900247/"
           >
             <small>
@@ -354,7 +373,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 14–17: Thursday Talks with Evonne"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/182109476000845/"
           >
             <small>
@@ -366,7 +385,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 18: Quick Parenting Solutions"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/949504315235785/"
           >
             <small>
@@ -377,7 +396,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 19: Quick Parenting Solutions"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/2230920133857503/"
           >
             <small>Thursday Talks with Evonne</small>
@@ -386,7 +405,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 20–22: Quick Parenting Solutions – Vaping"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/2193217890932638/"
           >
             <small>
@@ -398,7 +417,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 23: Quick Parenting Solutions"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/350357238889170/"
           >
             <small>Review and further discussion on the three L's.</small>
@@ -407,7 +426,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 24: Quick Parenting Solutions"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/1131119660390951/"
           >
             <small>
@@ -418,7 +437,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 25: Quick Parenting Solutions"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/2462256227334993/"
           >
             <small>The word "Warning"</small>
@@ -427,7 +446,7 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 26: Quick Parenting Solutions"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/406431183232956/"
           >
             <small>Alcohol, drugs and peer pressure</small>
@@ -436,17 +455,23 @@ const FreeResources: React.FC<FreeResourcesProps> = () => {
           <FreeResource
             title="Week 27–28: Quick Parenting Solutions – Limiting Screen Time"
             img={facebook}
-            tech="facebook"
+            // tech="facebook"
             link="https://www.facebook.com/evonneweinhaus/videos/372003733589763/"
           >
             <small>
               A 3-part series on limiting screen time, including practical tips
-              and communication methods for tech boundaries.
+              and communication methods for // tech boundaries.
             </small>
           </FreeResource>
+          </>
+        )}
         </div>
       </div>
+      <button className="expand-button" onClick={toggleExpand}>
+        {isExpanded ? "Show Less" : "Show More"}
+      </button>
     </section>
   );
 };
+
 export default FreeResources;

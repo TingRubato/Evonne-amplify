@@ -5,20 +5,22 @@ import AuthorImage from "../../assets/Images/evonne-bg.png";
 const Author: React.FC = () => {
   return (
     <section id="author">
-      <div className="author wrapper">
+      <div className="wrapper">
+  
         <div className="author-content">
           <article>
-            <div className="heading-wrapper">
-              <div className="desc">
+          <div className="desc">
                 <img
                   className="image-fluid"
                   src={AuthorImage}
                   alt="Evonne Weinhaus"
                 />
                 </div>
+
                 <div className="heading">
                 <h2 className="title">About Evonne Weinhaus</h2>
                 <div className="separator" />
+                <div className="author-content">
                 <p className="subtitle">
                   Evonne is a professional speaker, a family consultant, and an
                   award-winning parenting author. She has had numerous guest
@@ -144,7 +146,7 @@ const Author: React.FC = () => {
                   <br />I realized my mission of Empowered, Parent, Empowered
                   Teen was more important than ever in this day and age.
                 </p>
-              </div>
+                </div>
             </div>
           </article>
         </div>

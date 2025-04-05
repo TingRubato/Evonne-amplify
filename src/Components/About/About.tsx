@@ -11,33 +11,32 @@ interface AboutProps {
 const About: React.FC<AboutProps> = () => {
   return (
     <section id="about">
-      <div className="wrapper"></div>
       <script src="https://vjs.zencdn.net/8.22.0/video.min.js"></script>
       <article>
         <div>
-            <video
-            id="my-video"
-            className="video-js"
-            controls={true}
-            muted={true}
-            preload="none"
-            poster={PosterCover}
-            data-setup='{  "playbackRates": [1, 1.5, 2] }'
-            style={{
-              zIndex: 100,
-              position: "relative",
-              height: "30vh",
-              margin: "0 auto",
-              marginTop: "20px",
-            }}
-            >
-            <source src={HelloVideo} type="video/mp4" />
-            </video>
+          <div className="video-container">
+            <div className="wrapper">
+              <video
+                id="my-video"
+                className="video-ts"
+                controls={true}
+                muted={true}
+                preload="none"
+                poster={PosterCover}
+                data-setup='{  "playbackRates": [1, 1.5, 2] }'
+              >
+                <source src={HelloVideo} type="video/mp4" />
+              </video>
+            </div>
+          </div>
         </div>
+        <div className="wrapper">
 
         <div className="desc full">
-        <div className="title">
-            <h3 className="title">Do you want to argue less and connect more with your teen?</h3>
+          <div className="title">
+            <h3 className="title">
+              Do you want to argue less and connect more with your teen?
+            </h3>
             <p className="separator" />
             <p>
               My passion is to help parents empower both their teens and empower
@@ -48,16 +47,14 @@ const About: React.FC<AboutProps> = () => {
           <div className="title">
             <h3 className="subtitle">Are you...</h3>
             <p className="separator" />
-            <p>
-              Tired of repeating everything three times and not being heard?
-            </p>
-            <p>Drained from daily arguing?</p>
-            <p>Eventually, giving in to your teen?</p>
+            <h4>Tired of repeating everything three times and not being heard?</h4>
+            <h4>Drained from daily arguing?</h4>
+            <h4>Eventually, giving in to your teen?</h4>
           </div>
           <div className="title">
             <h3 className="title">Do you want to...</h3>
             <p className="separator" />
-            <p>be closer, more connected, with your teen?</p>
+            <h4>be closer, more connected, with your teen?</h4>
             <h3 className="subtitle">If so...</h3>
             <p className="separator" />
             <p>
@@ -68,6 +65,7 @@ const About: React.FC<AboutProps> = () => {
             </p>
             <h4 className="subtitle">You should get</h4>
           </div>
+        </div>
         </div>
       </article>
       <div className="sd-container">

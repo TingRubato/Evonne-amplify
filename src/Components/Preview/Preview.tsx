@@ -22,7 +22,7 @@ const Preview: FC = () => {
 							<ul className='page'>
 								<li></li>
 								<li>
-									<a className="btn" href="#">Download</a>
+									<a className="btn" href="/src/assets/stop-struggling-with-your-teen-excerpt-2.pdf" download>Download</a>
 								</li>
 								<li></li>
 								<li></li>

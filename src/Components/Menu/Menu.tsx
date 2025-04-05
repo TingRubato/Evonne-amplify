@@ -1,9 +1,11 @@
 import SocialLinks from '../SocialLinks';
+import { Link } from 'react-router-dom';
 import './Menu.css';
 
 interface MenuProps {
   showMenu: string;
   toggleMenu: () => void;
+
 }
 
 const Menu = (props: MenuProps): JSX.Element => {
@@ -27,11 +29,10 @@ const Menu = (props: MenuProps): JSX.Element => {
               About Evonne Weinhaus
             </a>
           </li>
-          <li>
-            <a href="/speakings" onClick={props.toggleMenu}>
-              SPEAKING
-            </a>
-          </li>
+          <li><Link to="/speakings" onClick={props.toggleMenu}>
+              SPEAKINGS
+            </Link>
+            </li>
           <li>
             <a href="/#contact" onClick={props.toggleMenu}>
               CONTACT

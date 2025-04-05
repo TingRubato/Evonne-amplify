@@ -69,7 +69,6 @@
 }
 
 #author .wrapper p {
-  padding: 2rem 10rem 2rem 18rem;
   height: 100%;
   /* max-width: 1400px; */
   /* margin: 0 auto;   */
@@ -78,11 +77,15 @@
 
 #author .author-content {
   margin: 0 auto;
+  padding: 2rem 10rem 2rem 18rem;
+
   display: flex;
   flex-direction: row;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   justify-content: center;
-  /* align-items: center; */
+  box-sizing: border-box;
+  background-color: rgba(26, 255, 255, 0.09);
+  align-items: center;
 }
 
 #author .title {
@@ -100,7 +103,7 @@
   text-align: center;
   color: inherit;
   padding-bottom: 1.5rem;
-} 
+}
 
 #author .heading .story p {
   margin: 0 auto;
