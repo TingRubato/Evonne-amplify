@@ -3,7 +3,7 @@
 .menu-container.active > .overlay {
   position: absolute;
   right: 0;
-  height: calc( 100vh -120px ); 
+  height: calc( 100vh - 120px ); 
   width: calc( 100vw - 120px );
   z-index: 1008;
   background: #fafafa;

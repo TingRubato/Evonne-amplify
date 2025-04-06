@@ -178,8 +178,8 @@
 }
 
 #about .sd-container {
-  &-container {
-    :is(-container){
+
+    :is(-container){  &-container {
       position: fixed;
       width: 100%;
       bottom: 10px;

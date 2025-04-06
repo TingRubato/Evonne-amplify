@@ -93,8 +93,8 @@ const Header: React.FC = () => {
         if (!ctx) return;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-        let rAlpha = this.alpha + Math.min((this.randomValue - 0.5) * sAlphaR, 1);    // random alpha for the shimmering
-        let rHue = randomArray[this.randomIndexh] > this.baseHueProportion ? hueArray[this.randomIndexa] : this.baseHue; // random hue or base hue
+        const rAlpha = this.alpha + Math.min((this.randomValue - 0.5) * sAlphaR, 1);    // random alpha for the shimmering
+        const rHue = randomArray[this.randomIndexh] > this.baseHueProportion ? hueArray[this.randomIndexa] : this.baseHue; // random hue or base hue
         this.color = "hsla(" + rHue + ",100%,85%," + rAlpha + ")";
         ctx.fillStyle = this.color;
         ctx.fill();
@@ -136,18 +136,18 @@ const Header: React.FC = () => {
       // method to get the modifier based on the age of the shooting star
       // when freshly born or close to die the length and brightness are reduced
       ageModifier() {
-        let halfLife = shootingStarBaseLifespan / 2.0;
+        const halfLife = shootingStarBaseLifespan / 2.0;
         return Math.pow(1.0 - Math.abs(this.framesLeft - halfLife) / halfLife, 2);
       }
 
       // method to draw each Star
       draw() {
         if (!ctx) return;
-        let am = this.ageModifier();
-        let endX = this.x - this.speedX * shootingStarBaseLength * am;
-        let endY = this.y - this.speedY * shootingStarBaseLength * am;
+        const am = this.ageModifier();
+        const endX = this.x - this.speedX * shootingStarBaseLength * am;
+        const endY = this.y - this.speedY * shootingStarBaseLength * am;
         // linear gradient for the color of the shooting star
-        let gradient = ctx.createLinearGradient(this.x, this.y, endX, endY);
+        const gradient = ctx.createLinearGradient(this.x, this.y, endX, endY);
         gradient.addColorStop(0, "#fff");         // brigth a the start
         gradient.addColorStop(Math.min(am, .7), this.color);     // colored in the middle
         gradient.addColorStop(1, "rgba(0,0,0,0)");// dim a the end
@@ -190,15 +190,15 @@ const Header: React.FC = () => {
 
       draw() {
         if (!ctxMw) return;
-        let starsPerLayer = Math.floor(mwClusterStarCount / mwClusterLayers);
+        const starsPerLayer = Math.floor(mwClusterStarCount / mwClusterLayers);
         for (let layer = 1; layer < mwClusterLayers; layer++) {
-          let layerRadius = this.size * layer / mwClusterLayers;
+          const layerRadius = this.size * layer / mwClusterLayers;
           for (let i = 1; i < starsPerLayer; i++) {
-            let posX = this.x + 2 * layerRadius * (Math.random() - .5);
-            let posY = this.y + 2 * Math.sqrt(Math.pow(layerRadius, 2) - Math.pow(this.x - posX, 2)) * (Math.random() - .5);
-            let size = .05 + Math.random() * .15;
-            let alpha = .3 + Math.random() * .4;
-            let whitePercentage = this.baseWhiteProportion + 15 + 15 * this.brigthnessModifier + Math.floor(Math.random() * 10);
+            const posX = this.x + 2 * layerRadius * (Math.random() - .5);
+            const posY = this.y + 2 * Math.sqrt(Math.pow(layerRadius, 2) - Math.pow(this.x - posX, 2)) * (Math.random() - .5);
+            const size = .05 + Math.random() * .15;
+            const alpha = .3 + Math.random() * .4;
+            const whitePercentage = this.baseWhiteProportion + 15 + 15 * this.brigthnessModifier + Math.floor(Math.random() * 10);
             ctxMw.beginPath();
             ctxMw.arc(posX, posY, size, 0, Math.PI * 2, false);
             ctxMw.fillStyle = "hsla(" + this.hue + ",100%," + whitePercentage + "%," + alpha + ")";  // 290 deg is pinkish color
@@ -207,7 +207,7 @@ const Header: React.FC = () => {
         }
         // adding an extra gradient
         if (!ctx) return;
-        let gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+        const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
         gradient.addColorStop(0, "hsla(" + this.hue + ",100%," + this.baseWhiteProportion + "%,0.002)");         // dim center
         gradient.addColorStop(0.25, "hsla(" + this.hue + ",100%," + (this.baseWhiteProportion + 30) + "%," + (0.01 + 0.01 * this.brigthnessModifier) + ")");         // brigth around center
         gradient.addColorStop(0.4, "hsla(" + this.hue + ",100%," + (this.baseWhiteProportion + 15) + "%,0.005)");     // colored in the middle
@@ -237,9 +237,9 @@ const Header: React.FC = () => {
 
       StarsArray = [];
       for (let i = 0; i < sNumber; i++) {
-        let size = (Math.random() * sSizeR) + sSize;
-        let x = Math.random() * ((window.innerWidth - size * 2) - (size * 2)) + size * 2;
-        let y = Math.random() * ((window.innerHeight - size * 2) - (size * 2)) + size * 2;
+        const size = (Math.random() * sSizeR) + sSize;
+        const x = Math.random() * ((window.innerWidth - size * 2) - (size * 2)) + size * 2;
+        const y = Math.random() * ((window.innerHeight - size * 2) - (size * 2)) + size * 2;
         StarsArray.push(new Star(x, y, size));
       }
 
@@ -259,11 +259,11 @@ const Header: React.FC = () => {
 
       // pushing a new shooting star randomly
       if (randomArray[randomArrayIterator] < shootingStarDensity) {
-        let posX = Math.floor(Math.random() * (canvas?.width || 0));  // will appear anywhere from left to right
-        let posY = Math.floor(Math.random() * 150); // will appear anywhere from top to 150px from top
-        let speedX = Math.floor((Math.random() - .5) * shootingStarBaseXspeed); // will go anywhere left or right
-        let speedY = Math.floor(Math.random() * shootingStarBaseYspeed); // will go down
-        let color = shootingStarsColors[Math.floor(Math.random() * shootingStarsColors.length)];
+        const posX = Math.floor(Math.random() * (canvas?.width || 0));  // will appear anywhere from left to right
+        const posY = Math.floor(Math.random() * 150); // will appear anywhere from top to 150px from top
+        const speedX = Math.floor((Math.random() - .5) * shootingStarBaseXspeed); // will go anywhere left or right
+        const speedY = Math.floor(Math.random() * shootingStarBaseYspeed); // will go down
+        const color = shootingStarsColors[Math.floor(Math.random() * shootingStarsColors.length)];
         ShootingStarsArray.push(new ShootingStar(posX, posY, speedX, speedY, color));
       }
 
@@ -295,7 +295,7 @@ const Header: React.FC = () => {
 
     // to get y position of a star or cluster in the milky way depending on x position
     function MilkyWayYFromX(xPos: number, mode: string) {
-      let offset = ((window.innerWidth / 2) - xPos) * mwAngle;
+      const offset = ((window.innerWidth / 2) - xPos) * mwAngle;
       if (mode === "star") {
         return Math.floor(Math.pow(Math.random(), 1.2) * window.innerHeight * (Math.random() - .5) + window.innerHeight / 2 + (Math.random() - .5) * 100) + offset;
       }
@@ -310,35 +310,40 @@ const Header: React.FC = () => {
       // at first we draw unclustered stars
       for (let i = 0; i < mwStarCount; i++) {
         ctxMw.beginPath();
-        let xPos = MilkyWayX();
-        let yPos = Math.random() < mwRandomStarProp ? Math.floor(Math.random() * window.innerHeight) : MilkyWayYFromX(xPos, "star");
-        let size = Math.random() * .27;
+        const xPos = MilkyWayX();
+        const yPos = Math.random() < mwRandomStarProp ? Math.floor(Math.random() * window.innerHeight) : MilkyWayYFromX(xPos, "star");
+        const size = Math.random() * .27;
         ctxMw.arc(xPos, yPos, size, 0, Math.PI * 2, false);
-        let alpha = .4 + Math.random() * .6;
+        const alpha = .4 + Math.random() * .6;
         ctxMw.fillStyle = "hsla(0,100%,100%," + alpha + ")";
         ctxMw.fill();
       }
       // now we draw clusters
       for (let i = 0; i < mwClusterCount; i++) {
-        let xPos = MilkyWayX();
-        let yPos = MilkyWayYFromX(xPos, "cluster");
+        const xPos = MilkyWayX();
+        const yPos = MilkyWayYFromX(xPos, "cluster");
         // modifier using position of the cluster, a value of 1 is at the center, 0 is on the side
-        let distToCenter = (1 - (Math.abs(xPos - window.innerWidth / 2) / (window.innerWidth / 2))) * (1 - (Math.abs(yPos - window.innerHeight / 2) / (window.innerHeight / 2)));
-        let size = mwClusterSize + Math.random() * mwClusterSizeR;
+        const distToCenter = (1 - (Math.abs(xPos - window.innerWidth / 2) / (window.innerWidth / 2))) * (1 - (Math.abs(yPos - window.innerHeight / 2) / (window.innerHeight / 2)));
+        const size = mwClusterSize + Math.random() * mwClusterSizeR;
         // the hue is not the same depending on how close the cluster is to the center, half of the modifier value depends on it
-        let hue = mwHueMin + Math.floor((Math.random() * .5 + distToCenter * .5) * (mwHueMax - mwHueMin));
-        let baseWhiteProportion = mwWhiteProportionMin + Math.random() * (mwWhiteProportionMax - mwWhiteProportionMin);
+        const hue = mwHueMin + Math.floor((Math.random() * .5 + distToCenter * .5) * (mwHueMax - mwHueMin));
+        const baseWhiteProportion = mwWhiteProportionMin + Math.random() * (mwWhiteProportionMax - mwWhiteProportionMin);
         new MwStarCluster(xPos, yPos, size, hue, baseWhiteProportion, distToCenter).draw();
       }
     }
 
     // Initialize and start animation
     init();
-    animate();
+    let animationFrameId: number;
+    const animateLoop = () => {
+      animationFrameId = requestAnimationFrame(animateLoop);
+      animate();
+    };
+    animateLoop();
 
     // Clean up on component unmount
     return () => {
-      window.cancelAnimationFrame(animate as any);
+      window.cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
@@ -347,7 +352,6 @@ const Header: React.FC = () => {
       <div className="silhouette" />
       <div className="moon" />
       <div className="stars" />
-
       <div className="container-star">
       <div className="container">
         <h1 className="title">Do you want to connect MORE
@@ -359,7 +363,7 @@ const Header: React.FC = () => {
         <div className="buttons">
           <a href="#about">About</a>
           <a href="https://learning.evonneweinhaus.com" className="cta">
-            Student Portal
+            Learn
           </a>
         </div>
       </div>
