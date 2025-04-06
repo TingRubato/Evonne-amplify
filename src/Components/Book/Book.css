@@ -5,6 +5,7 @@
     background: linear-gradient(215deg, #f0f0f0 0%,#fafafa 100%);
     margin-top: -10rem;
     z-index: 1;
+    padding: 4vh;
   }
   
   #book a,
@@ -16,18 +17,13 @@
   #book a:active {
     color: #252934;
   }
-  
-  /* Container */
-  #book .book-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    width: 100%;
-    padding: 12rem 5rem 8rem;
+  #book .heading {
+      padding: 2rem 12rem 2rem 12rem;
+
   }
-  
   /* Heading */
-  #book .book-container .heading  h3{
-    font-size: 2.4rem;
+  #book .heading .title {
+    font-size: 2rem;
     margin-bottom: 2rem;
     text-align: center;
   }
@@ -43,7 +39,6 @@
   #book .heading .subtitle {
     font-size: 1.6rem;
     text-align: center;
-    color: inherit;
     padding-bottom: 1.5rem;
   } 
 
@@ -51,7 +46,7 @@
     list-style-type: circle;
     justify-content: center;
     display: inline-block;
-    margin: 2rem 2rem 1rem 1rem;
+    margin: 2rem;
   }
   
   
@@ -161,6 +156,10 @@
     #book .project {
       grid-template-columns: 1fr 2fr;
     }
+
+    #book .container {
+      padding: 2rem 2rem 2rem 2rem;
+
   }
   
   @media only screen and (max-width: 949px) {
@@ -173,8 +172,8 @@
     #book {
       background: #f0f0f0;
     }
-    #book .book-container {
-      padding: 12rem 0 8rem;
+    #book .container {
+      padding: 2rem 2rem 2rem 2rem;
     }
     #book .project {
       padding: 2rem 0;

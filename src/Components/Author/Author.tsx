@@ -23,8 +23,8 @@ const Author: React.FC = () => {
                 <div className="separator" />
                 <div className="author-content">
                 <p className="subtitle">
-                  Evonne is a professional speaker, a family consultant, and an
-                  award-winning parenting author. She has had numerous guest
+                 Evonne is a professional speaker, a family consultant, and an
+                  award-winning parenting author.<br />She has had numerous guest
                   spots on{" "}
                   <b>
                     <i>The Today Show</i>
@@ -61,7 +61,8 @@ const Author: React.FC = () => {
                   <b>
                     <i>Breakthrough: A Conscious Documentary</i>
                   </b>
-                  . Her books{" "}
+                  .<br />
+                  Her books{" "}
                   <b>
                     <i>Stop Struggling with Your Teen</i>
                   </b>{" "}

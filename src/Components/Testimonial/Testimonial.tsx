@@ -66,7 +66,9 @@ const Testimonial = () => {
 
   return (
     <section id="testimonial">
-      <section className="cards-container">
+        <h2 className="title">What Others are Saying: </h2>
+        <div className="separator" />
+        <section className="cards-container">
         <div className={`card card-current ${currentId === 1 ? 'active' : ''}`} id="1">
           <br />
           <p>
@@ -75,9 +77,7 @@ const Testimonial = () => {
           </p>
           <br />
           <br />
-          <i>
             <h1>--- TRIBUNE MEDIA SERVICES</h1>
-          </i>
           <div className="social">
             <i className="fa fa-facebook" />
             <i className="fa fa-twitter" />
@@ -86,7 +86,7 @@ const Testimonial = () => {
           </div>
         </div>
         <div className="card" id="2">
-          <br />
+        <br />
           <p>
             Your "knock your socks off" workshop was everything l hoped it!would
             be plus more. We made a lot of money and had toturn people away. In
@@ -97,9 +97,7 @@ const Testimonial = () => {
           </p>
           <br />
           <br />
-          <i>
             <h1>--- PC., RPA, CFE, CIFI, MHP, GHS Property and Casualty</h1>
-          </i>
           <div className="social">
             <i className="fa fa-facebook" />
             <i className="fa fa-twitter" />
@@ -108,16 +106,15 @@ const Testimonial = () => {
           </div>
         </div>
         <div className="card" id="3">
-          <br />
+        <br />
+
           <p>
             She works the room like Susan Powter. High energy. Fast paced. Lots
             of audience participation.
           </p>
           <br />
           <br />
-          <i>
             <h1>--- St. Petersburg Times</h1>
-          </i>
           <div className="social">
             <i className="fa fa-facebook" />
             <i className="fa fa-twitter" />
@@ -136,9 +133,7 @@ const Testimonial = () => {
           </p>
           <br />
           <br />
-          <i>
             <h1>--WH., Manager of Training & Development CNA</h1>
-          </i>
           <div className="social">
             <i className="fa fa-facebook" />
             <i className="fa fa-twitter" />
@@ -156,14 +151,12 @@ const Testimonial = () => {
             you!
           </p>
           <br />
-          <i>
             <h1>
               -- K.B.K, Ph.D. <br />
               Assistant Professor, English/Creative Writing
               <br />
               STEPHENS COLLEGE
             </h1>
-          </i>
           <div className="social">
             <i className="fa fa-facebook" />
             <i className="fa fa-twitter" />
