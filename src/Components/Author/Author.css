@@ -125,12 +125,13 @@
 
 #author img {
   /* width: 50%; */
-  top: -10%;
+  top: -2%;
+  left: 8%;
 }
 
 
 #author .desc {
-  grid-column-end: span 2;
+  /* grid-column-end: span 2; */
   /* padding: 2rem; */
 }
 
@@ -216,8 +217,8 @@
         flex-direction: column;
       }
       #author img {
-        /* width: 50%; */
-        top: 5%;
+        top: -4%;
+        left: 3%;
       }
     }
 }

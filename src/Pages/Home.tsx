@@ -9,6 +9,7 @@ import Client from "../Components/Clients/Client";
 import Banner from "../Components/Banner/Banner";
 import FreeResources from "../Components/FreeResources/FreeResources";
 import Contact from "../Components/Contact/Contact";
+import Footer from "../Components/Footer/Footer";
 
 const Home: React.FC = () => (
   <>
@@ -22,6 +23,8 @@ const Home: React.FC = () => (
     <Client />
     <FreeResources />
     <Contact />
+    <Footer />
+    
   </>
 );
 

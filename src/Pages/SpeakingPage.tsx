@@ -3,7 +3,8 @@ import BannerImg from "../assets/Images/evonne-weinhaus-fast-solutiuons.png";
 import "./SpeakingPage.css";
 
 const SpeakingsPage:React.FC = () => (
-  <section id="speaking">
+  <>
+    <section id="speaking">
     <div className="wrapper">
       <div className="title">
         <h3>Speaking Topics</h3>
@@ -232,9 +233,12 @@ const SpeakingsPage:React.FC = () => (
           </p>
         </div>
       </div>
-    </div>
-    <img src={BannerImg} alt="Banner" />
-  </section>
+      </div>
+
+      <img src={BannerImg} alt="Banner" />
+
+    </section>
+  </>
 );
 
 export default SpeakingsPage;

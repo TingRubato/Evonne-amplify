@@ -3,8 +3,9 @@ import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Home from "./Pages/Home";
 import Menu from "./Components/Menu/Menu";
 import SpeakingPage from "./Pages/SpeakingPage";
-import UpsellPage from "./Pages/UpsellPage";
 import Nav from "./Components/Nav/Nav";
+import UpsellPage from "./Pages/UpsellPage";
+// import BonusPage from "./Pages/BonusPage";
 
 function App() {
   const [showMenu, setShowMenu] = useState(""); // 控制菜单显示状态

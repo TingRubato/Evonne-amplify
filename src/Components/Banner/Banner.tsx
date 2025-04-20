@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { gsap } from "gsap";
 import CustomEase from "gsap/CustomEase";
 import "./Banner.css";
-import oldCover from "../../assets/Images/cover.jpg";
-import republishedCover from "../../assets/Images/republished-2016.jpg";
+import backCover from "../../assets/Images/backCover.jpg";
+import frontCover from "../../assets/Images/book-cover.jpg";
 const Banner = () => {
   useEffect(() => {
     gsap.registerPlugin(CustomEase);
@@ -142,7 +142,7 @@ const Banner = () => {
                   </div>
                   <div className="books__image">
                     <img
-                      src={oldCover}
+                      src={frontCover}
                       alt="Published in March 1, 1988"
                     />
                     <div className="books__effect"></div>
@@ -152,9 +152,7 @@ const Banner = () => {
                 </div>
               </div>
               <div className="books__title">
-                originally republished on 
-                <br />
-                March 1, 1988
+                front cover<br />
                 </div>
             </div>
             <div className="books__item">
@@ -168,8 +166,8 @@ const Banner = () => {
                   </div>
                   <div className="books__image">
                     <img
-                      src={republishedCover}
-                      alt="Psychedelics and Mental Health by Irene de Caso"
+                      src={backCover}
+                      alt="backCover"
                     />
                     <div className="books__effect"></div>
                     <div className="books__light"></div>
@@ -179,7 +177,7 @@ const Banner = () => {
               </div>
               <div className="books__title">
                 republished on<br />
-                March 25, 2019</div>
+                </div>
             </div>
           </div>
           <div className="right-text">

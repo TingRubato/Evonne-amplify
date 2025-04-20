@@ -1,6 +1,5 @@
 #navbar {
   position: fixed;
-  z-index: 1000;
   width: 100vw;
   padding: 1rem;
   background-color: black;

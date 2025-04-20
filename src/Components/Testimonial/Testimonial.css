@@ -3,11 +3,15 @@
     position: relative;
     background: #ffffff;
     z-index: 1;
-    padding: 5%;
+    padding: 4rem 12rem 4rem 12rem;
     font-size: x-large;
     /* padding-bottom: 50px; */
 }
-
+#testimonial title {
+    margin: 2rem auto;
+    padding: 2rem;
+    text-align: center;
+  }
 #testimonial .tabs-controls {
     position: relative;
     display: flex;

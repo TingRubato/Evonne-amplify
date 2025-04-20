@@ -1,630 +1,939 @@
-import React, { useEffect } from "react";
-import "./UpsellPage.css";
+import { useEffect, useRef} from "react";
+import Reveal from "reveal.js";
+import 'reveal.js/dist/reveal.css';
+import 'reveal.js/dist/reset.css';
+import "reveal.js/dist/theme/black.css";
+import RevealZoom from "reveal.js/plugin/zoom/zoom.esm";
+import RevealNotes from "reveal.js/plugin/notes/notes.esm";
+import RevealSearch from "reveal.js/plugin/search/search.esm";
+import RevealMarkdown from "reveal.js/plugin/markdown/markdown.esm";
+import RevealHighlight from "reveal.js/plugin/highlight/highlight.esm";
+import Logo from "../assets/Images/reveal-white-text.svg"; // Import your logo image
 
 const UpsellPage: React.FC = () => {
+  const deckDivRef = useRef<HTMLDivElement>(null); // reference to deck container div
+  const deckRef = useRef<Reveal.Api | null>(null); // reference to deck reveal instance
+
   useEffect(() => {
-    const addStylesheet = (
-      href: string,
-      integrity?: string,
-      crossOrigin?: string
-    ) => {
-      const link = document.createElement("link");
-      link.rel = "stylesheet";
-      link.href = href;
-      if (integrity) link.integrity = integrity;
-      if (crossOrigin) link.crossOrigin = crossOrigin;
-      document.head.appendChild(link);
-    };
+      // Prevents double initialization in strict mode
+      if (deckRef.current) return;
 
-    addStylesheet(
-      "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",
-      "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u",
-      "anonymous"
-    );
-    addStylesheet(
-      "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
-      "sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN",
-      "anonymous"
-    );
-    addStylesheet(
-      "https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css"
-    );
+      // Initialize Reveal.js instance with organized config options
+      deckRef.current = new Reveal(deckDivRef.current!, {
+        // Core presentation controls
+        controls: true,
+      });
 
-    return () => {
-      // Cleanup logic if needed
-    };
+      deckRef.current.initialize().then(() => {
+          // good place for event handlers and plugin setups
+      });
+
+      return () => {
+          try {
+              if (deckRef.current) {
+                  deckRef.current.destroy();
+                  deckRef.current = null;
+              }
+          } catch (e) {
+              console.warn("Reveal.js destroy call failed.");
+          }
+      };
   }, []);
 
+
+
   return (
-    <>
-      <section id="upsell">
-        <div className="wrapper">
-          {/* ------------------------- Main Title / Intro -------------------------- */}
-          <div className="title">
-            <h3>
-              <strong>STOP STRUGGLING with your TEEN!</strong>
-            </h3>
-            <div className="separator"></div>
-            <p className="subtitle">
-              Do you want to connect MORE and argue LESS with your teen?
-            </p>
-
-            <p>A Complete, Easy-to-Use Guide for Parents of Pre-teens and Teens</p>
-
-            <p>
-              <strong>Don't just hope for</strong>{" "}
-              <strong>a better relationship – take action now!</strong>
-            </p>
-
-            <p>
-              Begin the same journey that has helped hundreds of thousands of parents,
-            </p>
-
-            <p>
-              Discover how to stand your ground and at the same time reconnect and
-              rebuild a strong, loving relationship with your teen.
-            </p>
-
-            <h4>
-              <strong>
-                The Stop Struggling books sold over a quarter of a million copies.
-              </strong>
-            </h4>
-
-            <h3>
-              <strong>
-                Do You Want to Reconnect &amp; Build a Stronger Relationship With Your
-                Teen?
-              </strong>
-            </h3>
-
-            <ul>
-              <li>
-                <strong>This book is a complete program</strong> mapped out… rich
-                with examples of real life issues with step by step solutions.
-              </li>
-              <li>
-                <strong>A proven guide</strong> to help you reconnect with your
-                teenager.
-              </li>
-              <li>
-                <strong>Actionable strategies</strong> and{" "}
-                <strong>easy-to-follow exercises</strong> for immediate results.
-              </li>
-              <li>
-                it's a <strong>complete toolkit</strong> for raising resilient and
-                happy kids.
-              </li>
-            </ul>
-
-            <p>Don't waste another day struggling with your 8-18 year old</p>
-
-            <h4>
-              <strong>
-                Invest in your relationship and enjoy the teenage years
-              </strong>
-            </h4>
-
-            <p>
-              <strong>Limited Time Offer:</strong> Grab Your eBook Now Plus
-              Bonuses
-            </p>
-          </div>
-
-          {/* ---------------------------- Description Block 1 ---------------------------- */}
-          <div className="desc full">
-            <h4>
-              <strong>
-                Is constant fighting with your teenager making you feel like this?
-              </strong>
-            </h4>
-
-            <div className="feelings-list">
-              <ul>
-                <li>
-                  <strong>Frustrated:</strong> My teen just doesn't listen.
-                </li>
-                <li>
-                  <strong>Overwhelmed:</strong> I can't handle it all.
-                </li>
-                <li>
-                  <strong>Angry:</strong> I'm furious!
-                </li>
-                <li>
-                  <strong>Fearful:</strong> What if I can't protect my teen?
-                </li>
-              </ul>
-
-              <ul>
-                <li>
-                  <strong>Helpless:</strong> I feel so disconnected from my teen.
-                </li>
-                <li>
-                  <strong>Disappointed:</strong> My kid surely is not the child I
-                  expected.
-                </li>
-                <li>
-                  <strong>Confused:</strong> I don't know what else to do. I've
-                  tried everything
-                </li>
-              </ul>
-            </div>
-
-            <p>
-              <strong>You're not alone.</strong>
-              <br />
-              Countless parents struggle to communicate effectively with their
-              teens.
-              <br />
-              When parents are in pain, they want solutions, not theory. And this
-              is the exact promise of <em>Stop Struggling with Your Teen</em>.
-            </p>
-
-            <p>
-              As <em>St. Louis Post Dispatch</em> columnist said, "
-              <em>Stop Struggling with Your Teen</em> can be read in an hour and
-              applied in the next."
-            </p>
-
-            <p>How can that possibly work?</p>
-
-            <p>
-              <u>By learning the 4 step Stop Struggling approach:</u>
-            </p>
-
-            <ul>
-              <li>
-                <strong>Think Differently by changing your language.</strong>
-              </li>
-              <li>
-                <strong>
-                  Turn Responsibility Over with love-not using fear-based tactics.
-                </strong>
-              </li>
-              <li>
-                <strong>
-                  Tap into parents' rights by addressing your part of the problem.
-                </strong>
-              </li>
-              <li>
-                <strong>
-                  Take a stand in a no-nonsense and respectful manner.
-                </strong>
-              </li>
-            </ul>
-
-            <p>
-              You will quickly see that, <em>Stop Struggling With Your Teen</em>{" "}
-              provides you with solutions so you will be able to rebuild your
-              relationship, reduce fighting and revitalize healthy communication
-              with your teen.
-            </p>
-          </div>
-
-          {/* ---------------------------- Description Block 2 ---------------------------- */}
-          <div className="desc">
-            <p>
-              As a result, you'll be able to strike that delicate balance between
-              setting limits while encouraging your teen's independence...
-            </p>
-
-            <ul>
-              <li>Stopping unnecessary power struggles without yelling.</li>
-              <li>
-                Letting go of{" "}
-                <u>
-                  teen's problem in a way that you don't feel like you have given
-                  in or given up
-                </u>
-                .
-              </li>
-              <li>
-                Raising teens who are equipped with the skills necessary to become
-                responsible, well-adjusted adults.
-              </li>
-              <li>
-                Creating your own action plan using the included{" "}
-                <em>Stop Struggling With Your Teen Companion Workbook.</em>
-              </li>
-              <li>Being tough on the problem while tender with your teen.</li>
-            </ul>
-          </div>
-
-          {/* ---------------------------- Description Block 3 ---------------------------- */}
-          <div className="desc">
-            <p>
-              Many years ago, I met with a Dad and his high school senior son in a
-              joint session. It wasn't going well at all. I saw them each try to
-              have a one-upmanship — they were in the throes of what I would call
-              then a power struggle. The dad became so irate that he got up to
-              leave the session.
-            </p>
-
-            <p>
-              At the moment, the teen said the words that are etched in my heart.
-              "If you ever gave a sh*t about me, you will sit down and listen."
-            </p>
-
-            <p>
-              His dad turned around, saw his son's face and sat back down."Dad,
-              sometimes I don't even want to live anymore. Nothing makes any sense
-              to me. Last week when you were gone, I went searching for your
-              guns."
-            </p>
-
-            <p>
-              The dad's face was one of anguish and fear. His anger was gone. He
-              moved his chair closer to his son and at that moment, the road of
-              recovery had begun. And for me, that was the moment my life changed.
-              I wanted to help both parents and teens never to feel so hopeless,
-              so desperate. How? By educating parents to develop a way both
-              parents and teens feel empowered. Not just one or the other, but
-              both. Empowered Parenting, Empowered Teen.
-            </p>
-
-            <p>
-              I realized my mission of{" "}
-              <strong>
-                <em>
-                  Empowered, Parent, Empowered Teen was more important than ever
-                  in this day and age which is why I wrote the book.
-                </em>
-              </strong>
-            </p>
-
-            <p>
-              Evonne is a sought-after relationship therapist, a certified Imago
-              couples counselor and an award-winning parenting author.
-            </p>
-
-            <p>
-              Her expertise and humor-filled style have landed her numerous guest
-              spots on <em>The Today Show</em>, <em>Good Morning America</em> and
-              the <em>Oprah Winfrey show</em>, plus being featured in{" "}
-              <em>Family Circle</em>, McCall's,{" "}
-              <em>Woman's Day Working Mother</em> and showcased as a teacher in
-              the movie- <em>Breakthrough</em>: <em>A Conscious Documentary</em>.
-            </p>
-
-            <p>
-              Her books <em>Stop Struggling with Your Teen</em> and{" "}
-              <em>Stop Struggling With Your Child</em> have together sold more
-              than a quarter of a million copies worldwide.
-            </p>
-
-            <p>Discover more about Evonne Weinhaus at www.evonneweinhaus.com</p>
-          </div>
-
-          {/* ---------------------------- Book Intro Title ---------------------------- */}
-          <h3>
-            <strong>Stop Struggling with your Teen:</strong>
-          </h3>
+    <div className="reveal" ref={deckDivRef}>
+      <div className="slides">
+        <section>
+          <a href="https://revealjs.com">
+            <img
+              src={Logo}
+              alt="reveal.js logo"
+              style={{
+                height: "180px",
+                margin: "0 auto 4rem auto",
+                background: "transparent",
+              }}
+              className="demo-logo"
+            />
+          </a>
+          <h3>The HTML Presentation Framework</h3>
           <p>
-            A Complete, Easy-to-Use Guide to Reconnect &amp; Rebuild Your
-            Relationship with Your Child
+            <small>
+              Created by <a href="http://hakim.se">Hakim El Hattab</a> and{" "}
+              <a href="https://github.com/hakimel/reveal.js/graphs/contributors">
+                contributors
+              </a>
+            </small>
+          </p>
+        </section>
+
+        <section>
+          <h2>Hello There</h2>
+          <p>
+            reveal.js enables you to create beautiful interactive slide decks
+            using HTML. This presentation will show you examples of what it
+            can do.
+          </p>
+        </section>
+
+        <section>
+          <section>
+            <h2>Vertical Slides</h2>
+            <p>Slides can be nested inside of each other.</p>
+            <p>
+              Use the <em>Space</em> key to navigate through all slides.
+            </p>
+            <br />
+            <a href="#/2/1" className="navigate-down">
+              <img
+                className="r-frame"
+                style={{ background: "rgba(255,255,255,0.1)" }}
+                width="178"
+                height="238"
+                data-src="../assets/Images/arrow.png"
+                alt="Down arrow"
+              />
+            </a>
+          </section>
+          <section>
+            <h2>Basement Level 1</h2>
+            <p>
+              Nested slides are useful for adding additional detail underneath
+              a high level horizontal slide.
+            </p>
+          </section>
+
+          <section>
+            <h2>Basement Level 2</h2>
+            <p>That's it, time to go back up.</p>
+            <br />
+            <a href="#/2">
+              <img
+                className="r-frame"
+                style={{
+                  background:
+                    "rgba(255,255,255,0.1); transform: rotate(180deg)",
+                }}
+                width="178"
+                height="238"
+                data-src="../assets/Images/arrow.png"
+                alt="Up arrow"
+              />
+            </a>
+          </section>
+        </section>
+
+        <section>
+          <h2>Slides</h2>
+          <p>
+            Not a coder? Not a problem. There's a fully-featured visual editor
+            for authoring these, try it out at{" "}
+            <a href="https://slides.com" target="_blank">
+              https://slides.com
+            </a>
+            .
+          </p>
+        </section>
+
+        <section data-visibility="hidden">
+          <h2>Hidden Slides</h2>
+          <p>
+            This slide is visible in the source, but hidden when the
+            presentation is viewed. You can show all hidden slides by setting
+            the `showHiddenSlides` config option to `true`.
+          </p>
+        </section>
+
+        <section data-auto-animate>
+          <h2 data-id="code-title">Pretty Code</h2>
+          <pre data-id="code-animation">
+            <code className="hljs javascript" data-trim data-line-numbers>
+              {`
+              import React, { useState } from 'react';
+  
+  function Example() {
+    const [count, setCount] = useState(0);
+  
+    return (
+      <div>
+        <p>You clicked {count} times</p>
+        <button onClick={() => setCount(count + 1)}>
+          Click me
+        </button>
+      </div>
+    );
+  }
+  `}
+            </code>
+          </pre>
+          <p>
+            Code syntax highlighting courtesy of{" "}
+            <a href="https://highlightjs.org/usage/">highlight.js</a>.
+          </p>
+        </section>
+
+        <section data-auto-animate>
+          <h2 data-id="code-title">With Animations</h2>
+          <pre data-id="code-animation">
+            <code
+              className="hljs javascript"
+              data-trim
+              data-line-numbers="|4,8-11|17|22-24"
+            >{`
+                import React, { useState } from 'react';
+                
+                function Example() {
+                  const [count, setCount] = useState(0);
+                
+                  return (
+                    <div>
+                      <p>You clicked {count} times</p>
+                      <button onClick={() => setCount(count + 1)}>
+                        Click me
+                      </button>
+                    </div>
+                  );
+                }
+                
+                function SecondExample() {
+                  const [count, setCount] = useState(0);
+                
+                  return (
+                    <div>
+                      <p>You clicked {count} times</p>
+                      <button onClick={() => setCount(count + 1)}>
+                        Click me
+                      </button>
+                    </div>
+                  );
+                }
+      `}</code>
+          </pre>
+        </section>
+
+        <section>
+          <h2>Point of View</h2>
+          <p>
+            Press <strong>ESC</strong> to enter the slide overview.
           </p>
           <p>
-            Grab Your Copy of the eBook Now With Exclusive Bonuses Only Available
-            on This Page
+            Hold down the <strong>alt</strong> key (<strong>ctrl</strong> in
+            Linux) and click on any element to zoom towards it using{" "}
+            <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Click again to
+            zoom back out.
           </p>
+          <p>(NOTE: Use ctrl + click in Linux.)</p>
+        </section>
 
-          {/* ---------------------------- Testimonials Carousel ---------------------------- */}
-          <div className="testimonial">
-            <div className="container">
-              <div className="row">
-                <div id="testimonial-slider" className="owl-carousel">
-                <div className="testimonial-item">
-                <div className="pic">
-                      <img
-                        src="https://static.pexels.com/photos/529928/pexels-photo-529928.jpeg"
-                        alt="Woman's Day"
-                      />
-                    </div>
-                    <div className="testimonial-content">
-                      <p>
-                        "If you've tried everything from guidance to bribery and
-                        nothing works, you are ready for Stop Struggling With Your
-                        Teen."
-                      </p>
-                    </div>
-                    <h3 className="testimonial-title">
-                      <a href="#">Woman's Day</a>
-                      <small> - Magazine Feature</small>
-                    </h3>
-                  </div>
-                  <div className="testimonial-item">
-                  <div className="pic">
-                      <img
-                        src="https://static.pexels.com/photos/529928/pexels-photo-529928.jpeg"
-                        alt="Charley"
-                      />
-                    </div>
-                    <div className="testimonial-content">
-                      <p>
-                        "I was inspired to start using these new skills
-                        immediately and best of all they worked. Thank you,
-                        Evonne!"
-                      </p>
-                    </div>
-                    <h3 className="testimonial-title">
-                      <a href="#">Charley</a>
-                      <small> - Parent</small>
-                    </h3>
-                  </div>
+        <section
+          data-auto-animate
+          data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+        >
+          <h2>Auto-Animate</h2>
+          <p>
+            Automatically animate matching elements across slides with{" "}
+            <a href="https://revealjs.com/auto-animate/">Auto-Animate</a>.
+          </p>
+          <div className="r-hstack justify-center">
+            <div
+              data-id="box1"
+              style={{
+                background: "#999",
+                width: "50px",
+                height: "50px",
+                margin: "10px",
+                borderRadius: "5px",
+              }}
+            ></div>
+            <div
+              data-id="box2"
+              style={{
+                background: "#999",
+                width: "50px",
+                height: "50px",
+                margin: "10px",
+                borderRadius: "5px",
+              }}
+            ></div>
+            <div
+              data-id="box3"
+              style={{
+                background: "#999",
+                width: "50px",
+                height: "50px",
+                margin: "10px",
+                borderRadius: "5px",
+              }}
+            ></div>
+          </div>
+        </section>
+        <section
+          data-auto-animate
+          data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+        >
+          <div className="r-hstack justify-center">
+            <div
+              data-id="box1"
+              data-auto-animate-delay="0"
+              style={{
+                background: "cyan",
+                width: "150px",
+                height: "100px",
+                margin: "10px",
+              }}
+            ></div>
+            <div
+              data-id="box2"
+              data-auto-animate-delay="0.1"
+              style={{
+                background: "magenta",
+                width: "150px",
+                height: "100px",
+                margin: "10px",
+              }}
+            ></div>
+            <div
+              data-id="box3"
+              data-auto-animate-delay="0.2"
+              style={{
+                background: "yellow",
+                width: "150px",
+                height: "100px",
+                margin: "10px",
+              }}
+            ></div>
+          </div>
+          <h2 style={{ marginTop: "20px" }}>Auto-Animate</h2>
+        </section>
+        <section
+          data-auto-animate
+          data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+        >
+          <div className="r-stack">
+            <div
+              data-id="box1"
+              style={{ background: "cyan", width: "300px", height: "300px" }}
+            ></div>
+            <div
+              data-id="box2"
+              style={{
+                background: "magenta",
+                width: "200px",
+                height: "200px",
+              }}
+            ></div>
+            <div
+              data-id="box3"
+              style={{
+                background: "yellow",
+                width: "100px",
+                height: "100px",
+              }}
+            ></div>
+          </div>
+          <h2 style={{ marginTop: "20px" }}>Auto-Animate</h2>
+        </section>
 
-                  <div className="testimonial-item">
-                  <div className="pic">
-                      <img
-                        src="https://static.pexels.com/photos/529928/pexels-photo-529928.jpeg"
-                        alt="Aga M."
-                      />
-                    </div>
-                    <div className="testimonial-content">
-                      <p>
-                        "I LOVED this book. Now that I've read it once, I'm going
-                        to follow all the guides and workbooks. Your method has
-                        been LIFE CHANGING."
-                      </p>
-                    </div>
-                    <h3 className="testimonial-title">
-                      <a href="#">Aga M.</a>
-                      <small> - Reader</small>
-                    </h3>
-                  </div>
+        <section>
+          <h2>Touch Optimized</h2>
+          <p>
+            Presentations look great on touch devices, like mobile phones and
+            tablets. Simply swipe through your slides.
+          </p>
+        </section>
 
-                  <div className="testimonial-item">
-                  <div className="pic">
-                      <img
-                        src="https://static.pexels.com/photos/529928/pexels-photo-529928.jpeg"
-                        alt="Cindy"
-                      />
-                    </div>
-                    <div className="testimonial-content">
-                      <p>
-                        "I'm not sure my son would be in one piece today if it
-                        were not for the 'Stop Struggling With Your Teen'
-                        approach."
-                      </p>
-                    </div>
-                    <h3 className="testimonial-title">
-                      <a href="#">Cindy</a>
-                      <small> - Grateful Mom</small>
-                    </h3>
-                  </div>
-                </div>
-              </div>
+        <section data-markdown>
+          <script type="text/template">
+            ## Markdown Support Write content using inline or external
+            Markdown. Instructions and more info available in the
+            [docs](https://revealjs.com/markdown/). ```html []
+            <section data-markdown>
+              ## Markdown Support Write content using inline or external
+              Markdown. Instructions and more info available in the
+              [docs](https://revealjs.com/markdown/).
+            </section>
+            ```
+          </script>
+        </section>
 
-              <p>There's zero risk for you with our 100% money back guarantee</p>
-
-              <div className="desc">
-                <div className="bonuses">
-                  <h4>Bonuses:</h4>
-                  <ul>
-                    <li>
-                      <em>
-                        A PDF copy of the updated and expanded national best
-                        seller- Stop Struggling With Your Teen-immediately
-                        available upon signing up.
-                      </em>
-                    </li>
-                    <li>
-                      <em>
-                        This PDF copy includes Evonne's complete, easy-to-use
-                        workbook- Resolving Conflict Without Blame- a companion
-                        workbook that helps you adapt the Stop Struggling
-                        parenting action plan with your own situations.
-                      </em>
-                    </li>
-                    <li>
-                      <em>
-                        Recorded 1:1 client session of Evonne working 1:1 with a
-                        mom who has a very inventive and strong-willed teen. See
-                        first hand how this mom successfully stops struggling with
-                        her teen. (audio version)
-                      </em>
-                    </li>
-                    <li>
-                      <em>
-                        Parent- Teen Quiz featured on the Today show. If you are
-                        at your wit's end with your teen, take this quiz and
-                        discover how to handle common every day problems
-                        differently.
-                      </em>
-                    </li>
-                    <li>
-                      <em>
-                        How to talk to Your Kid about Homework- 2 package audio
-                        course. If you want a quick and effective solution that
-                        encourages your kids to complete their homework, this 2
-                        lessons audio course is for you.
-                      </em>
-                    </li>
-                    <li>
-                      <em>
-                        PDF transcript of the audio lesson for those who prefer
-                        reading to listening.
-                      </em>
-                    </li>
-                    <li>
-                      <em>
-                        Mini video course-Screen Time Limits- 3 videos- 7 minutes
-                        total. Learn effective communication tools and easy
-                        routines to set healthy screen time limits that you can
-                        implement immediately.
-                      </em>
-                    </li>
-                    <li>
-                      <em>60 minute presentation Live.</em>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="desc">
-                <div className="benefits">
-                  <div className="desc">
-                    <div className="benefits">
-                      <h4>Benefits:</h4>
-                      <li>
-                        <em>
-                          Develop a systematic four step parenting action plan
-                          that helps you stand your ground and, at the same time,
-                          set limits with your teen.
-                        </em>
-                      </li>
-                      <li>
-                        <em>
-                          Stop power struggles with your teen without giving in.
-                        </em>
-                      </li>
-                      <li>
-                        <em>Empower yourself and your teen.</em>
-                      </li>
-                      <li>
-                        <em>Build trust and respect with each other.</em>
-                      </li>
-                      <li>
-                        <em>Transform your attitude by changing your language</em>
-                      </li>
-                      <li>
-                        <em>
-                          Establish the credibility of your word by following
-                          through with follow-through.
-                        </em>
-                      </li>
-                      <li>
-                        <em>
-                          Create a proactive plan to get through to your teen in
-                          critical situations where a bad choice can lead to
-                          devastating outcomes.
-                        </em>
-                      </li>
-                      <li>
-                        <em>
-                          How to let go of your teen's problem with love — not
-                          feeling like you've just given in or given up
-                        </em>
-                      </li>
-                    </div>
-                  </div>
-                </div>
-                <div className="desc full">
-                  <h2>
-                    <strong>
-                      "Great Resource for Grandparents Raising Teenage
-                      Grandchildren"
-                    </strong>
-                  </h2>
-                  <p>
-                    Where was this when I was raising my children? Great
-                    information for my second time around — negotiating and
-                    setting boundaries. Excellent read.
-                  </p>
-
-                  <h3>
-                    <strong>
-                      Evonne Asks...
-                      <br />
-                      What If You Could Begin to Act Differently?
-                    </strong>
-                  </h3>
-
-                  <p>
-                    Many parents base their success on how their teens behave.
-                    Does my kid listen to me? How are their grades in school? How
-                    can I stop my teen from hanging out with a rough crowd? The
-                    result of this kind of thinking leads to parents feeling
-                    guilty, angry and frustrated. They think they they have failed
-                    as parents. What if you could ….. Begin to act differently.
-                  </p>
-
-                  <p>
-                    When parents issue orders, make threats and demands — they
-                    can't follow through with, teens learn to wait them out.
-                    Teenagers know they can, will and do outlast their parents.
-                    Parents will either cave in or teens will sneak, lie and do
-                    what they want anyway. All trust is lost. Parents don't trust
-                    their teens, most certainly teens don't trust their parents
-                    and if truth be known, parents don't trust themselves. What if
-                    you… Find another way to demonstrate your love for your teens
-                    and learn how to let go of a problem in a way that reflects a
-                    loving, respectful attitude.
-                  </p>
-
-                  <p>
-                    When parents become desperate to make their kids listen, to
-                    obey and to respect them, many parents do something drastic.
-                    They may go "on strike" or take away all their kids'
-                    electronics. Usually teens still tune them out and parents end
-                    up feeling angrier, more unheard, and more unappreciated. Most
-                    parents don't realize being tough with your teen is quite
-                    different from being tough on the problem. What if you… learn
-                    how to "Be tough on the problem — not on your teen"
-                  </p>
-                </div>
-
-                <div className="desc full">
-                  <img
-                    src="https://d1yei2z3i6k35z.cloudfront.net/7161068/6622714df152f_Screenshot2024-04-19152337.png"
-                    alt=""
-                  />
-
-                  <h3>Frequently asked questions</h3>
-
-                  <div className="faq">
-                    <div className="faq-item">
-                      <h4>What if my teen refuses to cooperate?</h4>
-                      <p>
-                        The beauty of this guide is the focus is on how you can
-                        change yourself instead of waiting for your teen to
-                        change. That could take a lifetime.
-                      </p>
-                    </div>
-
-                    <div className="faq-item">
-                      <h4>Is this appropriate for all ages?</h4>
-                      <p>
-                        Yes! This book is geared towards pre-teens and teens but
-                        also can be applied to all ages. I had one client tell me
-                        they used these Stop Struggling skills to negotiate buying
-                        a new home.
-                      </p>
-                    </div>
-
-                    <div className="faq-item">
-                      <h4>
-                        Will this guide help me communicate better with my teen?
-                      </h4>
-                      <p>
-                        Absolutely. Our guide teaches specific communication
-                        skills along with concrete examples in handling
-                        parent-teen issues such as homework, drugs and chores.
-                      </p>
-                    </div>
-
-                    <div className="faq-item">
-                      <h4>
-                        How much time does it take to implement the strategies in
-                        the guide?
-                      </h4>
-                      <p>
-                        "It can be read in an hour and applied in the next," says
-                        a St. Louis Post Dispatch columnist, Doris Helmering.
-                      </p>
-                    </div>
-
-                    <div className="faq-item">
-                      <h4>Are there any additional resources available online?</h4>
-                      <p>Got any more questions?</p>
-                      <p>Please email me at support@evonneweinhaus.com</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <section>
+          <h2>Lightbox</h2>
+          Turn any element into a{" "}
+          <a href="https://revealjs.com/lightbox/">lightbox</a> using{" "}
+          <strong>data‑preview‑image</strong> &{" "}
+          <strong>data‑preview‑video</strong>.
+          <div className="r-hstack" style={{ gap: "2rem" }}>
+            <div>
+              <pre style={{ fontSize: "12px", width: "100%" }}>
+                <code className="html" data-trim>
+                  &lt;img src="image.png" data-preview-image="image.png"&gt;
+                </code>
+              </pre>
+              <img
+                src="../src/assets/Images/slides-symbol-1024x1024.png"
+                height="100"
+                data-preview-image
+              />
+            </div>
+            <div>
+              <pre style={{ fontSize: "12px", width: "100%" }}>
+                <code className="html" data-trim>
+                  &lt;img src="video.png" data-preview-video="video.mp4"&gt;
+                </code>
+              </pre>
+              <img
+                src="../src/assets/Images/homepage-video-editor.png"
+                height="100"
+                data-preview-video="../src/assets/Images/homepage-video-editor.mp4"
+              />
             </div>
           </div>
-        </div>
-      </section>
-    </>
+        </section>
+
+        <section>
+          <p>
+            Add the <code>r-fit-text</code> class to auto-size text
+          </p>
+          <h2 className="r-fit-text">FIT TEXT</h2>
+        </section>
+
+        <section>
+          <section id="fragments">
+            <h2>Fragments</h2>
+            <p>Hit the next arrow...</p>
+            <p className="fragment">... to step through ...</p>
+            <p>
+              <span className="fragment">... a</span>{" "}
+              <span className="fragment">fragmented</span>{" "}
+              <span className="fragment">slide.</span>
+            </p>
+
+            <aside className="notes">
+              This slide has fragments which are also stepped through in the
+              notes window.
+            </aside>
+          </section>
+          <section>
+            <h2>Fragment Styles</h2>
+            <p>There's different types of fragments, like:</p>
+            <p className="fragment grow">grow</p>
+            <p className="fragment shrink">shrink</p>
+            <p className="fragment fade-out">fade-out</p>
+            <p>
+              <span
+                style={{ display: "inline-block" }}
+                className="fragment fade-right"
+              >
+                fade-right,{" "}
+              </span>
+              <span
+                style={{ display: "inline-block" }}
+                className="fragment fade-up"
+              >
+                up,{" "}
+              </span>
+              <span
+                style={{ display: "inline-block" }}
+                className="fragment fade-down"
+              >
+                down,{" "}
+              </span>
+              <span
+                style={{ display: "inline-block" }}
+                className="fragment fade-left"
+              >
+                left
+              </span>
+            </p>
+            <p className="fragment fade-in-then-out">fade-in-then-out</p>
+            <p className="fragment fade-in-then-semi-out">
+              fade-in-then-semi-out
+            </p>
+            <p>
+              Highlight <span className="fragment highlight-red">red</span>{" "}
+              <span className="fragment highlight-blue">blue</span>{" "}
+              <span className="fragment highlight-green">green</span>
+            </p>
+          </section>
+        </section>
+
+        <section id="transitions">
+          <h2>Transition Styles</h2>
+          <p>
+            You can select from different transitions, like: <br />
+            <a href="?transition=none#/transitions">None</a> -
+            <a href="?transition=fade#/transitions">Fade</a> -
+            <a href="?transition=slide#/transitions">Slide</a> -
+            <a href="?transition=convex#/transitions">Convex</a> -
+            <a href="?transition=concave#/transitions">Concave</a> -
+            <a href="?transition=zoom#/transitions">Zoom</a>
+          </p>
+        </section>
+
+        <section id="themes">
+          <h2>Themes</h2>
+          <p>
+            reveal.js comes with a few themes built in: <br />
+            <a
+              href="#/themes"
+              onClick={() => {
+                const themeEl = document.getElementById("theme");
+                if (themeEl) {
+                  themeEl.setAttribute("href", "dist/theme/black.css");
+                }
+                return false;
+              }}
+            >
+              Black (default)
+            </a>{" "}
+            -
+            <a
+              href="#/themes"
+              onClick={() => {
+                document
+                  .getElementById("theme")
+                  ?.setAttribute("href", "dist/theme/white.css");
+                return false;
+              }}
+            >
+              White
+            </a>{" "}
+            -
+            <a
+              href="#/themes"
+              onClick={() => {
+                document
+                  .getElementById("theme")
+                  ?.setAttribute("href", "dist/theme/league.css");
+                return false;
+              }}
+            >
+              League
+            </a>{" "}
+            -
+            <a
+              href="#/themes"
+              onClick={() => {
+                document
+                  .getElementById("theme")
+                  ?.setAttribute("href", "dist/theme/sky.css");
+                return false;
+              }}
+            >
+              Sky
+            </a>{" "}
+            -
+            <a
+              href="#/themes"
+              onClick={() => {
+                document
+                  .getElementById("theme")
+                  ?.setAttribute("href", "dist/theme/beige.css");
+                return false;
+              }}
+            >
+              Beige
+            </a>{" "}
+            -
+            <a
+              href="#/themes"
+              onClick={() => {
+                document
+                  .getElementById("theme")
+                  ?.setAttribute("href", "dist/theme/simple.css");
+                return false;
+              }}
+            >
+              Simple
+            </a>{" "}
+            <br />
+            <a
+              href="#/themes"
+              onClick={() => {
+                document
+                  .getElementById("theme")
+                  ?.setAttribute("href", "dist/theme/serif.css");
+                return false;
+              }}
+            >
+              Serif
+            </a>{" "}
+            -
+            <a
+              href="#/themes"
+              onClick={() => {
+                document
+                  .getElementById("theme")
+                  ?.setAttribute("href", "dist/theme/blood.css");
+                return false;
+              }}
+            >
+              Blood
+            </a>{" "}
+            -
+            <a
+              href="#/themes"
+              onClick={() => {
+                document
+                  .getElementById("theme")
+                  ?.setAttribute("href", "dist/theme/night.css");
+                return false;
+              }}
+            >
+              Night
+            </a>{" "}
+            -
+            <a
+              href="#/themes"
+              onClick={() => {
+                document
+                  .getElementById("theme")
+                  ?.setAttribute("href", "dist/theme/moon.css");
+                return false;
+              }}
+            >
+              Moon
+            </a>{" "}
+            -
+            <a
+              href="#/themes"
+              onClick={() => {
+                document
+                  .getElementById("theme")
+                  ?.setAttribute("href", "dist/theme/solarized.css");
+                return false;
+              }}
+            >
+              Solarized
+            </a>
+          </p>
+        </section>
+
+        <section>
+          <section data-background="#dddddd">
+            <h2>Slide Backgrounds</h2>
+            <p>
+              Set <code>data-background="#dddddd"</code> on a slide to change
+              the background color. All CSS color formats are supported.
+            </p>
+            <a href="#" className="navigate-down">
+              <img
+                className="r-frame"
+                style={{ background: "rgba(255,255,255,0.1)" }}
+                width={178}
+                height={238}
+                data-src="https://static.slid.es/reveal/arrow.png"
+                alt="Down arrow"
+              />
+            </a>
+          </section>
+          <section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+            <h2>Gradient Backgrounds</h2>
+            <pre>
+              <code className="hljs html wrap">
+                &lt;section data-background-gradient= "linear-gradient(to
+                bottom, #ddd, #191919)"&gt;
+              </code>
+            </pre>
+          </section>
+          <section data-background="../assets/Images/image-placeholder.png">
+            <h2>Image Backgrounds</h2>
+            <pre>
+              <code className="hljs html">
+                &lt;section data-background="image.png"&gt;
+              </code>
+            </pre>
+          </section>
+          <section
+            data-background="../assets/Images/image-placeholder.png"
+            data-background-repeat="repeat"
+            data-background-size="100px"
+          >
+            <h2>Tiled Backgrounds</h2>
+            <pre>
+              <code className="hljs html" style={{ wordWrap: "break-word" }}>
+                &lt;section data-background="image.png"
+                data-background-repeat="repeat"
+                data-background-size="100px"&gt;
+              </code>
+            </pre>
+          </section>
+          <section
+            data-background-video="../src/assets/Images/homepage-video-editor.mp4"
+            data-background-color="#000000"
+          >
+            <div
+              style={{
+                backgroundColor: "rgba(0, 0, 0, 0.9)",
+                color: "#fff",
+                padding: "20px",
+              }}
+            >
+              <h2>Video Backgrounds</h2>
+              <pre>
+                <code
+                  className="hljs html"
+                  style={{ wordWrap: "break-word" }}
+                >
+                  &lt;section data-background-video="video.mp4,video.webm"&gt;
+                </code>
+              </pre>
+            </div>
+          </section>
+          <section data-background="../src/assets/Images/90F8aUepslB84.gif">
+            <h2>... and GIFs!</h2>
+          </section>
+        </section>
+
+        <section
+          data-transition="slide"
+          data-background="#4d7e65"
+          data-background-transition="zoom"
+        >
+          <h2>Background Transitions</h2>
+          <p>
+            Different background transitions are available via the
+            backgroundTransition option. This one's called "zoom".
+          </p>
+          <pre>
+            <code className="hljs javascript">
+              {`Reveal.configure({ backgroundTransition: 'zoom' })`}
+            </code>
+          </pre>
+        </section>
+
+        <section
+          data-transition="slide"
+          data-background="#b5533c"
+          data-background-transition="zoom"
+        >
+          <h2>Background Transitions</h2>
+          <p>You can override background transitions per-slide.</p>
+          <pre>
+            <code className="hljs html" style={{ wordWrap: "break-word" }}>
+              &lt;section data-background-transition="zoom"&gt;
+            </code>
+          </pre>
+        </section>
+
+        <section
+          data-background-iframe="https://hakim.se"
+          data-background-interactive
+        >
+          <div
+            style={{
+              position: "absolute",
+              width: "40%",
+              right: 0,
+              boxShadow:
+                "0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2)",
+              backgroundColor: "rgba(0, 0, 0, 0.9)",
+              color: "#fff",
+              padding: "20px",
+              fontSize: "20px",
+              textAlign: "left",
+            }}
+          >
+            <h2>Iframe Backgrounds</h2>
+            <p>
+              Since reveal.js runs on the web, you can easily embed other web
+              content. Try interacting with the page in the background.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Marvelous List</h2>
+          <ul>
+            <li>No order here</li>
+            <li>Or here</li>
+            <li>Or here</li>
+            <li>Or here</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Fantastic Ordered List</h2>
+          <ol>
+            <li>One is smaller than...</li>
+            <li>Two is smaller than...</li>
+            <li>Three!</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>Tabular Tables</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Value</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Apples</td>
+                <td>$1</td>
+                <td>7</td>
+              </tr>
+              <tr>
+                <td>Lemonade</td>
+                <td>$2</td>
+                <td>18</td>
+              </tr>
+              <tr>
+                <td>Bread</td>
+                <td>$3</td>
+                <td>2</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2>Clever Quotes</h2>
+          <p>
+            These guys come in two forms, inline:{" "}
+            <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+              The nice thing about standards is that there are so many to
+              choose from
+            </q>{" "}
+            and block:
+          </p>
+          <blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+            &ldquo;For years there has been a theory that millions of monkeys
+            typing at random on millions of typewriters would reproduce the
+            entire works of Shakespeare. The Internet has proven this theory
+            to be untrue.&rdquo;
+          </blockquote>
+        </section>
+
+        <section>
+          <h2>Intergalactic Interconnections</h2>
+          <p>
+            You can link between slides internally,
+            <a href="#/2/3">like this</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2>Speaker View</h2>
+          <p>
+            There's a{" "}
+            <a href="https://revealjs.com/speaker-view/">speaker view</a>. It
+            includes a timer, preview of the upcoming slide as well as your
+            speaker notes.
+          </p>
+          <p>
+            Press the <em>S</em> key to try it out.
+          </p>
+
+          <aside className="notes">
+            Oh hey, these are some notes. They'll be hidden in your
+            presentation, but you can see them if you open the speaker notes
+            window (hit 's' on your keyboard).
+          </aside>
+        </section>
+
+        <section>
+          <h2>Export to PDF</h2>
+          <p>
+            Presentations can be{" "}
+            <a href="https://revealjs.com/pdf-export/">exported to PDF</a>,
+            here's an example:
+          </p>
+          <iframe
+            data-src="https://www.slideshare.net/slideshow/embed_code/42840540"
+            width="445"
+            height="355"
+            style={{
+              border: "3px solid #666",
+              marginBottom: "5px",
+              maxWidth: "100%",
+              borderWidth: 0,
+              marginLeft: 0,
+              marginRight: 0,
+              marginTop: 0,
+            }}
+            allowFullScreen
+            title="Slideshare PDF Example"
+          ></iframe>
+        </section>
+
+        <section>
+          <h2>Global State</h2>
+          <p>
+            Set <code>data-state="something"</code> on a slide and{" "}
+            <code>"something"</code>
+            will be added as a class to the document element when the slide is
+            open. This lets you apply broader style changes, like switching
+            the page background.
+          </p>
+        </section>
+
+        <section data-state="customevent">
+          <h2>State Events</h2>
+          <pre>
+            <code
+              className="javascript"
+              data-trim
+              style={{ fontSize: "18px" }}
+            >
+              {`      Reveal.on( 'customevent', function() {
+        console.log( '"customevent" has fired' );
+        
+        } );
+  `}
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h2>Take a Moment</h2>
+          <p>
+            Press B or . on your keyboard to pause the presentation. This is
+            helpful when you're on stage and want to take distracting slides
+            off the screen.
+          </p>
+        </section>
+
+        <section>
+          <h2>Much more</h2>
+          <ul>
+            <li>Right-to-left support</li>
+            <li>
+              <a href="https://revealjs.com/api/">Extensive JavaScript API</a>
+            </li>
+            <li>
+              <a href="https://revealjs.com/auto-slide/">Auto-progression</a>
+            </li>
+            <li>
+              <a href="https://revealjs.com/backgrounds/#parallax-background">
+                Parallax backgrounds
+              </a>
+            </li>
+            <li>
+              <a href="https://revealjs.com/keyboard/">
+                Custom keyboard bindings
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section style={{ textAlign: "left" }}>
+          <h1>THE END</h1>
+          <p>
+            - <a href="https://slides.com">Try the online editor</a> <br />-{" "}
+            <a href="https://github.com/hakimel/reveal.js">
+              Source code &amp; documentation
+            </a>
+          </p>
+        </section>
+      </div>
+    </div>
   );
 };
 
