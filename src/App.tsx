@@ -5,7 +5,7 @@ import Menu from "./Components/Menu/Menu";
 import SpeakingPage from "./Pages/SpeakingPage";
 import Nav from "./Components/Nav/Nav";
 import UpsellPage from "./Pages/UpsellPage";
-// import BonusPage from "./Pages/BonusPage";
+import BookPage from "./Pages/BookPage";
 
 function App() {
   const [showMenu, setShowMenu] = useState(""); // 控制菜单显示状态
@@ -23,6 +23,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/speakings" element={<SpeakingPage />} />
         <Route path="/upsell" element={<UpsellPage />} />
+        <Route path="/book" element={<BookPage />} />
       </Routes>
       </BrowserRouter>
       </main>

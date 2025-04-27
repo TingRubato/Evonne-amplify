@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import Reveal from "reveal.js";
 import "reveal.js/dist/reveal.css";
-import "reveal.js/dist/theme/black.css";
+import "reveal.js/dist/theme/sky.css";
 
 // import Logo from "../assets/Images/evonne-logo-full.png";
-// import WontListen from "../assets/Images/wontlisten.jpeg";
+import WontListen from "../assets/Images/wontlisten.jpeg";
 import RevealZoom from "reveal.js/plugin/zoom/zoom.esm";
 import RevealNotes from "reveal.js/plugin/notes/notes.esm";
 import RevealSearch from "reveal.js/plugin/search/search.esm";
@@ -15,11 +15,10 @@ import VideoEditor from "../assets/Images/videocover.png";
 import VideoEditorVideo from "../assets/Media/evonne-welcome.mp4";
 import ImagePlaceHolder from "../assets/Images/image-placeholder.png";
 import GifMemes from "../assets/Images/90F8aUepslB84.gif";
-import ParentingImg from "../assets/Images/parenting.png";
 import BookCover from "../assets/Images/book-cover.png";
 import "./UpsellPage.css";
 
-export function UpsellPage() {
+export function BookPage() {
   const deckDivRef = useRef<HTMLDivElement>(null);
   const deckRef = useRef<Reveal.Api | null>(null);
 
@@ -81,15 +80,41 @@ export function UpsellPage() {
       <div className="slides">
         <section data-transition="slide">
           <section data-state="upsell-content" data-background="#fff">
-            <p className="fragment fade-in">
-            Wait, there's more! Continue your parenting journey even further with our exclusive offer.
+            <h2 className="fragment fade-in r-fit-text">
+              Do you want to connect MORE and argue LESS with your teen?
+            </h2>
+            <p>
+              <small className="fragment fade-in-then-semi-out">
+                Don't just hope for a better relationship – take action now!
+              </small>
+              <br />
+              <small className="fragment fade-in-then-semi-out">
+                Begin the same journey that has helped hundreds of thousands of
+                parents.
+              </small>
             </p>
-          
-            <video
+            <img
+              src={BookCover}
+              alt="Book Cover"
+              style={{ maxWidth: "200px" }}
+              className="fragment fade-in"
+            />
+            <p>
+              <small className="fragment fade-in">
+                Created by{" "}
+                <a href="https://evonneweinhaus.com">Evonne Weinhaus</a>
+              </small>
+            </p>
+          </section>
+          {/* <button className="button-get">Get it Now</button> */}
+
+          <section>
+            <div style={{ textAlign: "center" }}>
+              <video
                 src={VideoEditorVideo}
                 controls
                 style={{
-                  maxWidth: "50%",
+                  maxWidth: "75%",
                   borderRadius: "12px",
                   boxShadow: "0 2px 16px rgba(0,0,0,0.15)",
                 }}
@@ -97,132 +122,67 @@ export function UpsellPage() {
               >
                 Sorry, your browser doesn't support embedded videos.
               </video>
-          
-          </section>
-
-          <section>
-          <h3 className="fragment fade-in r-fit-text">
-            Ready to deepen your parenting journey?
-          </h3>
-            <h4 className="fragment fade-in r-fit-text" style={{ textAlign: "center" }}>
-              Upgrade to our complete online course now!
-            </h4>
-            <div style={{ textAlign: "center" }}>
-              <img
-              src={ParentingImg}
-              alt="Parenting Image"
-              style={{ maxWidth: "200px" }}
-              className="fragment fade-in"
-            />
-            <p className="fragment fade-in">
-            <small className="fragment fade-in">
-            Do you ever find yourself feeling guilty and overwhelmed as a parent?
-            </small>
-              <br />
-              <small className="fragment fade-in">
-              Have you ever felt disconnected from your teen and longing for more of a meaningful connection?
-              </small>
-              <br />
-              <small className="fragment fade-in">
-              Do you feel like things are slipping out of control, leaving you feeling frustrated and helpless?
-              </small>
-              <small className="fragment fade-in">
-              If so, we can help you crush it with the online course.
-              </small>
+              <p>
+                <small>
+                  Don't just hope for a better relationship – take action now!
+                </small>
               </p>
-
             </div>
           </section>
         </section>
 
         <section>
-          <h4 className="fragment fade-in r-fit-text">
-          What You’ll Learn From This Course
+          <img
+            src={BookCover}
+            alt="Book Cover"
+            style={{
+              maxWidth: "200px",
+              display: "block",
+              margin: "0 auto 24px",
+            }}
+            className="fragment fade-in"
+          />
+          <h4 className="fragment fade-in">
+            The Stop Struggling books sold over a quarter of a million copies.
           </h4>
-          <p className="fragment fade-in">
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                gap: "32px",
-                flexWrap: "wrap",
-                alignItems: "stretch",
-                margin: "24px 0",
-              }}
-            >
-              <div
-                className="carousel-column fragment fade-in"
-                style={{
-                  flex: "1 1 200px",
-                  maxWidth: "300px",
-                  minWidth: "200px",
-                  background: "#f7f7f7",
-                  borderRadius: "10px",
-                  padding: "20px",
-                  margin: "8px 0",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                }}
-              >
-                <h4 className="fragment fade-in" style={{ marginTop: 0, fontSize: "2rem" }}>Find Immediate Solutions</h4>
-                <p className="fragment fade-in r-fit-text" style={{ fontSize: "1rem" }}>
-                  <small>
-                  Short FAST Solutions that are action-oriented and work immediately.
-                  </small>
-                </p>
-              </div>
-              <div
-                className="carousel-column fragment fade-in"
-                style={{
-                  flex: "1 1 200px",
-                  maxWidth: "300px",
-                  minWidth: "200px",
-                  background: "#f7f7f7",
-                  borderRadius: "10px",
-                  padding: "20px",
-                  margin: "8px 0",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                }}
-              >
-                <h4 className="fragment fade-in" style={{ marginTop: 0, fontSize: "2rem" }}>Empower Yourself</h4>
-                <p className="fragment fade-in" style={{ fontSize: "1rem" }}>
-And at the same time empower your teen.
-                </p>
-              </div>
-              <div
-                className="carousel-column fragment fade-in"
-                style={{
-                  flex: "1 1 200px",
-                  maxWidth: "300px",
-                  minWidth: "200px",
-                  background: "#f7f7f7",
-                  borderRadius: "10px",
-                  padding: "20px",
-                  margin: "8px 0",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                }}
-              >
-                <h4 className="fragment fade-in" style={{ marginTop: 0, fontSize: "2rem" }}>End Exhausting, No-Win Power Struggles</h4>
-                <p className="fragment fade-in  r-fit-text">
-                  <small>No more screaming matches, meltdowns and no more guilt. Sound good?</small>
-                </p>
-              </div>
-            </div>
+          <p>
+            <small>
+              <ul>
+                <li className="fragment fade-in">
+                  This book is a complete program mapped out… rich with examples
+                  of real life issues with step by step solutions.
+                </li>
+                <li className="fragment fade-in">
+                  A proven guide to help you reconnect with your teenager.
+                </li>
+                <li className="fragment fade-in">
+                  Actionable strategies and easy-to-follow exercises for
+                  immediate results.
+                </li>
+                <li className="fragment fade-in">
+                  It's a complete toolkit for raising resilient and happy kids.
+                </li>
+              </ul>
+            </small>
           </p>
         </section>
 
         <section>
           <section>
+            <img
+              className="r-frame fragment fade-in"
+              data-fragment-index="1"
+              style={{
+                background: "rgba(255,255,255,0.1)",
+                maxHeight: "20vh",
+                margin: "10vh auto auto",
+                display: "block",
+              }}
+              data-src={WontListen}
+              alt="Down arrow"
+            />
             <h4 className="fragment fade-in" data-fragment-index="2">
-            Here’s what you’ll get when you upgrade to this package:
+              Is constant fighting with your teenager making you feel like this?
             </h4>
             <div
               style={{
@@ -238,122 +198,100 @@ And at the same time empower your teen.
                 style={{ listStyle: "disc", padding: 0, margin: 0 }}
               >
                 <li>
-                  <strong>Stop Struggling With Your Teen 1.0:</strong> 7 Videos plus bonuses.
+                  <strong>Frustrated:</strong> My teen just doesn’t listen.
                 </li>
                 <li>
-                  <strong>Stop Struggling With Your Teen 2.0:</strong> 10 videos ranging from 6-12 minutes long.
+                  <strong>Overwhelmed:</strong> I can’t handle it all.
                 </li>
                 <li>
-                  Easy-to-use worksheets and charts accompanying each video that include focused guidelines, practical examples and personalized action steps.
+                  <strong>Angry:</strong> I’m furious!
                 </li>
                 <li>
-                  4 package audio lessons that are an abbreviated version of Stop Struggling With Your Teen 1.0 &amp; 2.0 accessible from your phone or from your desktop.
+                  <strong>Fearful:</strong> What if I can’t protect my teen?
+                </li>
+              </ul>
+              <ul
+                className="fragment fade-in"
+                data-fragment-index="4"
+                style={{ listStyle: "disc", padding: 0, margin: 0 }}
+              >
+                <li>
+                  <strong>Helpless:</strong> I feel so disconnected from my
+                  teen.
                 </li>
                 <li>
-                  PDF transcript of the 4 audio lessons for those who prefer reading to listening.
+                  <strong>Disappointed:</strong> My kid surely is not the child
+                  I expected.
                 </li>
                 <li>
-                  Case Study of A Teen's Transformation: Turning Straw- Drugs, Discouraged &amp; All F's- Into Gold.
+                  <strong>Confused:</strong> I don’t know what else to do. I’ve
+                  tried everything
                 </li>
               </ul>
             </div>
-            <h4 className="fragment fade-in" data-fragment-index="5">
-            Note:
+            <h3 className="fragment fade-in" data-fragment-index="5">
+              You're not alone.
+            </h3>
+          </section>
+          <section>
+            <h3 className="fragment fade-in" data-fragment-index="6">
+              Countless parents struggle to communicate effectively with their
+              teens.
+            </h3>
+            <h4 className="fragment fade-in" data-fragment-index="7">
+              When parents are in pain, they want solutions, not theory. And
+              this is the exact promise of Stop Struggling with Your Teen.
             </h4>
-            <p className="fragment fade-in" data-fragment-index="5">
-              <small>
-            As a previous teacher, Evonne is most interested in people learning with minimum effort to maximize results. So she wanted to provide you with a variety of ways for you to soak in this material.
-            </small>
+          </section>
+
+          <section>
+          <p>
+          As St. Louis Post Dispatch columnist said, "Stop Struggling with
+              Your Teen can be read in an hour and applied in the next."
             </p>
+            <p>
+            So, how can that possibly work?</p>
+            <br />
           </section>
-              <section data-background="#2c3e50">
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
-                {/* Left Column - Image */}
-                <div style={{ flex: '0 0 20%', textAlign: 'center' }}>
-                {/* <img
-                  // src={WontListen}
-                  alt="Stop Struggling With Your Teen Course"
-                  style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }}
-                  className="fragment fade-in"
-                /> */}
-                </div>
+        </section>
 
-                {/* Right Column - Text Content */}
-                <div style={{ flex: '1', textAlign: 'left', color: '#fff' }}>
-                <p className="fragment fade-in" style={{ color: '#a0d2db', fontSize: '1rem', marginBottom: '5px' }}>
-                  ($300 VALUE)
-                </p>
-                <p className="fragment fade-in" style={{ color: '#f39c12', marginTop: '0', marginBottom: '15px'}}>
-                  Stop Struggling With Your Teen 1.0 Self Study (7 Videos plus bonuses)
-                </p>
-                <p className="fragment fade-in" style={{ fontSize: '0.6em', lineHeight: '1.4' }}>
-                  Self-study course operates on the principle that parents seek solutions, not just theories, especially when facing challenges. Therefore, we prioritize quick, action-oriented solutions that deliver immediate results.
-                </p>
-                <ul style={{ listStyle: 'none', paddingLeft: 0, fontSize: '0.4em', lineHeight: '1.5' }}>
-                  <li className="fragment fade-in">
-                  <strong>Video 1: The What:</strong> What is the one common factor that lurks behind all relationship problems
-                  </li>
-                  <li className="fragment fade-in">
-                  <strong>Video 2: The Why:</strong> Why do 99 per cent of parents unknowingly sabotage their relationship with their teens instead of strengthening it?
-                  </li>
-                  <li className="fragment fade-in">
-                  <strong>Video 3-7: The How:</strong> How can Five Fast Solutions allow parents to immediately argue less and connect more with their teen?
-                  </li>
-                </ul>
-                </div>
-              </div>
-          </section>
-
-          <section data-background="#2c3e50">
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
-              <div style={{ flex: '0 0 20%', textAlign: 'center' }}>
-                </div>
-                <div style={{ flex: '1', textAlign: 'left', color: '#fff' }}>
-                <p className="fragment fade-in" style={{ color: '#a0d2db', fontSize: '1rem', marginBottom: '5px' }}>
-                  ($600 VALUE)
-                </p>
-                <p className="fragment fade-in" style={{ color: '#f39c12', marginTop: '0', marginBottom: '15px'}}>
-                  Stop Struggling With Your Teen 2.0 - Self Study (10 Videos plus bonuses)
-                </p>
-                <p className="fragment fade-in" style={{ fontSize: '0.5em', lineHeight: '1.4' }}>
-                  Stop Struggling with Your Teen 2.0 consists of two modules-both the second and first most common mistakes that most parents make.
-                  What do both mistakes share in common? Strangely enough, most parents can't ever guess what they are because these mistakes are so part of their everyday lives.
-                </p>
-                <ul style={{ listStyle: 'none', paddingLeft: 0, fontSize: '0.4em', lineHeight: '1.5' }}>
-                  <li className="fragment fade-in">
-                  <strong>Video 1 - The What:</strong> What is the most underused communication skill parents can use to connect with their teen?
-                  </li>
-                  <li className="fragment fade-in">
-                  <strong>Video 2 - The Why:</strong> Why it's important to understand the root cause of a teen's discouragement.
-                  </li>
-                  <li className="fragment fade-in">
-                  <strong>Videos 3-6 - The How:</strong> How Three Fast Solutions can help parents encourage their teens—even when they feel they have nothing encouraging to say.
-                  </li>
-                   <li className="fragment fade-in">
-                  <strong>Video 7 - The What:</strong> What is the most common, yet often unrecognized, mistake parents make?
-                  </li>
-                   <li className="fragment fade-in">
-                  <strong>Video 8 - The Why:</strong> Why the ABCD response addresses the reasons teens may not trust their parents, and why parents sometimes lack self-trust.
-                  </li>
-                   <li className="fragment fade-in">
-                  <strong>Videos 9-10 - The How:</strong> How Two Fast Solutions can help parents move from chaos to credibility by following through on issues within their control.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </section>
+        <section>
+        <h2 className="r-fit-text">            By learning the 4 step Stop Struggling approach:
+          </h2>
+            <ul style={{ listStyle: "square", paddingLeft: 0 }}>
+            <li className="fragment fade-in" style={{ marginBottom: "12px" }}>
+              Think Differently by changing your language.
+            </li>
+            <li className="fragment fade-in" style={{ marginBottom: "12px" }}>
+              Turn Responsibility Over with love—not using fear-based tactics.
+            </li>
+            <li className="fragment fade-in" style={{ marginBottom: "12px" }}>
+              Tap into parents' rights by addressing your part of the problem.
+            </li>
+            <li className="fragment fade-in" style={{ marginBottom: "12px" }}>
+              Take a stand in a no-nonsense and respectful manner.
+            </li>
+            <li className="fragment fade-in" style={{ marginBottom: "12px" }}>
+              Embrace open communication to foster trust and understanding.
+            </li>
+            </ul>
+          <p className="r-fit-text">
+            You will quickly see that, Stop Struggling With Your Teen provides
+            you with solutions so you will be able to rebuild your relationship,
+            reduce fighting and revitalize healthy communication with your teen.
+          </p>
         </section>
 
         <section
           data-auto-animate
           data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
         >
-          <p> Maximize Your Success with All-Inclusive Resources...          </p>
           <h2 className="r-fit-text">As a result,</h2>
           <p>
-          You will discover how to...{" "}
+          you’ll be able to...{" "}
           </p>
           <div className="r-hstack justify-center">
+            
             <div
               className="gem-box"
               data-id="box1"
@@ -396,9 +334,18 @@ And at the same time empower your teen.
                 borderRadius: "5px",
               }}
             ></div>
+            <div
+              data-id="box5"
+              style={{
+                background: "#999",
+                width: "50px",
+                height: "50px",
+                margin: "10px",
+                borderRadius: "5px",
+              }}
+            ></div>
           </div>
         </section>
-
         <section
           data-auto-animate
           data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
@@ -413,9 +360,6 @@ And at the same time empower your teen.
                 flexDirection: "column",
                 alignItems: "flex-start",
                 marginLeft: "20px",
-                justifyContent: "space-between", // 添加这个属性
-                paddingTop: "50px",  // 添加上边距与标题对齐
-                height: "230px"
               }}
             >
               <div
@@ -426,6 +370,7 @@ And at the same time empower your teen.
                   background: "cyan",
                   width: "20px",
                   height: "20px",
+                  margin: "8px 0",
                   borderRadius: "5px",
                 }}
               ></div>
@@ -436,6 +381,7 @@ And at the same time empower your teen.
                   background: "magenta",
                   width: "20px",
                   height: "20px",
+                  margin: "8px 0",
                   borderRadius: "5px",
                 }}
               ></div>
@@ -446,6 +392,7 @@ And at the same time empower your teen.
                   background: "yellow",
                   width: "20px",
                   height: "20px",
+                  margin: "8px 0",
                   borderRadius: "5px",
                 }}
               ></div>
@@ -456,6 +403,18 @@ And at the same time empower your teen.
                   background: "limegreen",
                   width: "20px",
                   height: "20px",
+                  margin: "8px 0",
+                  borderRadius: "5px",
+                }}
+              ></div>
+              <div
+                data-id="box5"
+                data-auto-animate-delay="0.4"
+                style={{
+                  background: "orange",
+                  width: "20px",
+                  height: "20px",
+                  margin: "8px 0",
                   borderRadius: "5px",
                 }}
               ></div>
@@ -469,20 +428,24 @@ And at the same time empower your teen.
                 animationDelay: "500ms",
               }}
             >
-            <h3>You'll discover how to...</h3>
+            <h3>As a result, you’ll be able to...</h3>
               <ul style={{ listStyle: "none", padding: 0 }}>
                 <li style={{ marginBottom: "15px" }}>
-                Say the one word you can say to easily get your teen's attention.
+                  Stopping unnecessary power struggles without yelling.
                 </li>
                 <li style={{ marginBottom: "15px" }}>
-                Diffuse conflict by saying less than 10 words.
+                  Letting go of teen's problem in a way that you don't feel like
+                  you have given in or given up.
                 </li>
                 <li style={{ marginBottom: "15px" }}>
-                Utilize the #1 skill to initiate change with your teen when all else fails.
+                  Raising teens who are equipped with the skills necessary to
+                  become responsible, well-adjusted adults.
                 </li>
                 <li style={{ marginBottom: "15px" }}>
-                Raise your teen's feelings of self-worth by changing only one word you say.
+                  Creating your own action plan using the included Stop
+                  Struggling With Your Teen Companion Workbook.
                 </li>
+                <li>Being tough on the problem while tender with your teen.</li>
               </ul>
             </div>
           </div>
@@ -641,7 +604,7 @@ And at the same time empower your teen.
             <p className="fragment fade-in">
             <small>A Complete, Easy-to-Use Guide to Reconnect & Rebuild Your Relationship with Your Child</small>
             </p>
-            <p className="fragment fade-in">
+            <p className="fragment fade-in-then-semi-out">
               <small>Grab Your Copy of the eBook Now<br></br> with <br></br> Exclusive Bonuses Only Available on This Page</small>
             </p>
           </section>
@@ -1105,4 +1068,4 @@ And at the same time empower your teen.
   );
 }
 
-export default UpsellPage;
+export default BookPage;

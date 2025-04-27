@@ -13,7 +13,7 @@ Amplify.configure(outputs);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-      <Nav showMenu="" toggleMenu={() => {}} />
+    <Nav showMenu="" toggleMenu={() => {}} />
       <App />
   </React.StrictMode>
 );

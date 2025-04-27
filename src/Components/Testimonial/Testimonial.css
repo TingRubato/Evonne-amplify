@@ -1,5 +1,5 @@
 #testimonial {
-    font-size: 1rem;
+    /* font-size: 1rem; */
     position: relative;
     background: #ffffff;
     z-index: 1;
@@ -7,11 +7,15 @@
     font-size: x-large;
     /* padding-bottom: 50px; */
 }
-#testimonial title {
-    margin: 2rem auto;
-    padding: 2rem;
+#testimonial .h2 {
+    /* padding: auto; */
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #252934;
     text-align: center;
-  }
+    margin-bottom: 2rem;
+}
+
 #testimonial .tabs-controls {
     position: relative;
     display: flex;
@@ -56,6 +60,7 @@
 #testimonial .cards-container {
     position: relative;
     z-index: 1;
+    padding-top: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,7 +70,7 @@
 }
 
 #testimonial .cards-container .card {
-    margin: 2rem;    
+    margin: 1rem;    
     position: absolute;
     display: flex;
     flex-wrap: wrap;
@@ -79,7 +84,6 @@
     border: 1px solid #006699;
     box-shadow: 9px 11px 3px 0px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
-    margin: 2rem;
     transition: transform 0.3s, opacity 0.2s;
     max-width: 80vw;
 }
@@ -90,13 +94,13 @@
     right: 5%;
     font-size: clamp(16px, 2vw, 18px);
     line-height: 1;
-    bottom: 13%;
+    bottom: 20%;
     text-align: right;
     color: #423e37;
 }
 
 #testimonial .cards-container .card p {
-    margin: 1rem;
+    margin: 0.5rem;
     font-size: clamp(18px, 2.5vw, 26px);
     font-style: italic;
     line-height: 1.5;
@@ -219,7 +223,7 @@
     }
 
     .card {
-        padding: 10px;
+        /* padding: 10px; */
     }
 
     .card h1 {

@@ -65,8 +65,9 @@ const Testimonial = () => {
   }, []);
 
   return (
-    <section id="testimonial">
-        <h2 className="title">What Others are Saying: </h2>
+    <>
+      <section id="testimonial">
+      <h2 className="title">What Others are Saying: </h2>
         <div className="separator" />
         <section className="cards-container">
         <div className={`card card-current ${currentId === 1 ? 'active' : ''}`} id="1">
@@ -199,6 +200,7 @@ const Testimonial = () => {
         </ul>
       </section>
     </section>
+    </>
   );
 };
 
